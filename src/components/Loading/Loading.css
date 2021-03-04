@@ -1,0 +1,7 @@
+#loadText {
+    animation: color_change 1s infinite alternate;
+}
+@keyframes color_change {
+	from { color: rgb(194, 159, 83); }
+	to { color: rgb(139, 44, 44); }
+}
