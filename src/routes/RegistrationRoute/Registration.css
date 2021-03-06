@@ -1,0 +1,47 @@
+.img5 {
+    background-image: url("../../assets/conductor-with-neons-red.jpg");
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.publicForm {
+    background-color: #f8cfc9;
+}
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+}
+.form-inputs div {
+    margin-bottom: 20px;
+}
+.publicForm a {
+    color: #725659;
+}
+
+.registration button {
+    display: flex;
+    width: 300px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: 'Fascinate Inline','Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-image: linear-gradient(  #5d4346, #4A3336, #332426,  #332426);
+    color: #FFE6E2;
+    margin: 26px auto;
+    border-radius: 4px;
+}
+.registration button:hover, .registration button:focus {
+    background-image: linear-gradient(  #725659, #583f42, #443033,  #412e31);
+    cursor: pointer;
+}
+.registration {
+    background-color: #f8cfc9;
+}

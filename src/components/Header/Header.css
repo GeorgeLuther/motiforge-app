@@ -9,9 +9,17 @@ header {
     justify-content: space-between;
     padding: 0 8px;
     margin-top: 0;
-    background-image: linear-gradient(120deg,rgb(173, 88, 88), rgb(221, 142, 142));
+    background-image: linear-gradient(120deg,#1b2f31, #274144);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: space-between;
 }
+header button {
+    background: none;
+    border: none;
+    color: #F8A6A0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Rammetto+One&display=swap');
 h1 {
     padding: 0;
     margin: 0;
@@ -20,23 +28,13 @@ h1 a {
     padding: 0;
     margin: 0;
     font-weight: bold;
-    font-size: 65px;
-    background: url(../../assets/music-notes-blue.jpg);
-    background-size: cover;
-  
+    font-size: 100%;
+    font-family: 'Fascinate Inline', Arial, Helvetica, sans-serif;
+    background: url(../../assets/conductor-with-neons-red.jpg);
+    background-size: initial;
     background-attachment: fixed;
    -webkit-text-fill-color: transparent;
    -webkit-background-clip: text;
-}
-a {
-    color: rgb(7, 8, 82);
-    text-decoration: none;
-}
-a:hover {
-    color: rgb(94, 96, 228);
-}
-a:active {
-    color: rgb(223, 223, 223);
 }
 nav {
     flex: 1;
@@ -55,4 +53,9 @@ nav {
     nav a {
         padding: 8px;
     }
+}
+.hamburger {
+    margin-right: 12px;
+    font-size: 25px;
+    ;
 }

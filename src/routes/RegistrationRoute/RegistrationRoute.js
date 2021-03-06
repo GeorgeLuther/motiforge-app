@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
-
+import './Registration.css'
 class RegistrationRoute extends Component {
   static defaultProps = {
     history: {
@@ -15,14 +15,16 @@ class RegistrationRoute extends Component {
 
   render() {
     return (
-      <section>
-        <p>
-          Practice learning a language with the spaced reptition revision technique.
-        </p>
-        <h2>Sign up</h2>
-        <RegistrationForm
-          onRegistrationSuccess={this.handleRegistrationSuccess}
-        />
+      <section className="registration">
+        <div className="summary">
+          <div className="img5">
+            <h2>Sign up</h2>
+          </div>
+
+          <RegistrationForm
+            onRegistrationSuccess={this.handleRegistrationSuccess}
+          />
+        </div>
       </section>
     );
   }

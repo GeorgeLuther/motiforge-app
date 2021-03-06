@@ -53,50 +53,53 @@ class RegistrationForm extends Component {
     const { error } = this.state
     return (
       <form
+        className="publicForm"
         onSubmit={this.handleSubmit}
       >
-        <div role='alert'>
-          {error && <p>{error}</p>}
+        <div className="form-inputs">
+          <div role='alert'>
+            {error && <p>{error}</p>}
+          </div>
+          <div>
+            <label htmlFor='registration-name-input'>
+              Enter your name
+            </label>
+            <input
+              ref={this.firstInput}
+              id='registration-name-input'
+              name='name'
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='registration-username-input'>
+              Choose username
+            </label>
+            <input
+              id='registration-username-input'
+              name='username'
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='registration-password-input'>
+              Choose password
+            </label>
+            <input
+              id='registration-password-input'
+              name='password'
+              type='password'
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor='registration-name-input'>
-            Enter your name
-          </label>
-          <input
-            ref={this.firstInput}
-            id='registration-name-input'
-            name='name'
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='registration-username-input'>
-            Choose a username
-          </label>
-          <input
-            id='registration-username-input'
-            name='username'
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='registration-password-input'>
-            Choose a password
-          </label>
-          <input
-            id='registration-password-input'
-            name='password'
-            type='password'
-            required
-          />
-        </div>
-        <footer>
+        <div className="infographic">
           <button type='submit'>
             Sign up
           </button>
           {' '}
           <Link to='/login'>Already have an account?</Link>
-        </footer>
+        </div>
       </form>
     )
   }

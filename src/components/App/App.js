@@ -8,6 +8,7 @@ import LoginRoute from '../../routes/LoginRoute/LoginRoute'
 import Dashboard from '../Dashboard/Dashboard'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
+import Landing from '../Landing/Landing'
 
 export default class App extends Component {
   state = { hasError: false }
@@ -33,12 +34,16 @@ export default class App extends Component {
               component={Dashboard}
             />
             {/* <PrivateRoute
-              path={'/learn'}
+              path={'/motif'}
               component={MakeMotif}
             /> */}
             <PublicOnlyRoute
-              path={'/register'}
+              exact path={'/register'}
               component={RegistrationRoute}
+            />
+            <PublicOnlyRoute
+              path={'/landing'}
+              component={Landing}
             />
             <PublicOnlyRoute
               path={'/login'}

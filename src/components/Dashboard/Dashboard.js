@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import LanguageService from '../../services/language-service'
 import UserContext from '../../contexts/UserContext'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
-import Loading from '../Loading/Loading'
-
+// import Loading from '../Loading/Loading'
 
 import './Dashboard.css'
 
@@ -16,18 +14,17 @@ class Dashboard extends Component{
 
   static contextType = UserContext
 
-  componentDidMount(){
+  // componentDidMount(){
     
-  }
+  // }
   
   render() {
 
     return (
-            <section className='Dashboard'>
+        <section className='Dashboard'>
 
-                
-            </section>
             
+        </section>
     )
   }
 }

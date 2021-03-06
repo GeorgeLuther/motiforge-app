@@ -1,0 +1,80 @@
+.img1 {
+    background-image: url("../../assets/conductor-with-neons-red.jpg");
+    height: 150px;
+}
+.img3 {
+    background-image: url("../../assets/music-book-zoomed.jpg");
+}
+.img2 {
+    background-image: url("../../assets/piano-keys.jpg");
+}
+.img4 {
+    background-image: url("../../assets/music-notes-on-wall.jpg");
+}
+.img1, .img2, .img3, .img4 {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Rammetto+One&display=swap');
+h2 {
+    font-family: 'Fascinate Inline','Open Sans', Arial, Helvetica, sans-serif;
+    margin: auto;
+    width: 300px;
+    color: #e9e9e9;
+    text-align: center;
+    font-weight: 50;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: rgb(27, 27, 27);
+    color: #F8A6A0;
+    background-color: #1D3537;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.657), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.landing p {
+    font-family: 'Raleway','Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #f8cfc9;
+    color: #332426;
+    margin: auto;
+    max-width: 450px;
+    padding: 26px;
+    line-height: 2;
+}
+.infographic {
+    background-color: #FFE6E2;
+    padding: 26px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+}
+.landing a {
+    display: flex;
+    width: 280px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: 'Fascinate Inline','Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-image: linear-gradient(  #5d4346, #4A3336, #332426,  #332426);
+    color: #FFE6E2;
+    margin: 26px 0;
+    border-radius: 4px;
+}
+.landing a:hover, .landing a:focus {
+    background-image: linear-gradient(  #725659, #583f42, #443033,  #412e31);
+    cursor: pointer;
+}
+.landing a:active {
+    background-image: linear-gradient( #332426,  #332426, #5d4346, #4A3336,);
+}
+.landing {
+    
+    background-color: #f8cfc9;
+}
