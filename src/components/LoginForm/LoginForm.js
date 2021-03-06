@@ -46,39 +46,41 @@ class LoginForm extends Component {
     const { error } = this.state
     return (
       <form
-        className='LoginForm'
+        className='LoginForm publicForm'
         onSubmit={this.handleSubmit}
       >
-        <div role='alert'>
-          {error && <p>{error}</p>}
+        <div className="form-inputs">
+          <div role='alert'>
+            {error && <p>{error}</p>}
+          </div>
+          <div>
+            <label htmlFor='login-username-input'>
+              Username
+            </label>
+            <input
+              ref={this.firstInput}
+              id='login-username-input'
+              name='username'
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='login-password-input'>
+              Password
+            </label>
+            <input
+              id='login-password-input'
+              name='password'
+              type='password'
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor='login-username-input'>
-            Username
-          </label>
-          <input
-            ref={this.firstInput}
-            id='login-username-input'
-            name='username'
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='login-password-input'>
-            Password
-          </label>
-          <input
-            id='login-password-input'
-            name='password'
-            type='password'
-            required
-          />
-        </div>
-        <footer>
+        <div className="infographic">
           <button type='submit'>
             Login
           </button>
-        </footer>
+        </div>
       </form>
     )
   }

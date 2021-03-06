@@ -38,6 +38,14 @@ render(){
 
     return (
         <nav onMouseLeave={this.props.hideNav}>
+            <span className="username">
+                {this.context.user.name}
+            </span>
+            
+            {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+            
             <NavLink exact to='/' activeStyle={{display: "none"}}>
                 Info
             </NavLink>
@@ -57,13 +65,6 @@ render(){
             <NavLink to='/forms' activeStyle={{display: "none"}}>
                 Forms
             </NavLink>
-            
-            <span>
-          {this.context.user.name}
-        </span>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
            
             {/* <NavLink to='/projects' activeStyle={{display: "none"}}>
                 Projects
@@ -76,12 +77,7 @@ render(){
             {TokenService.isAdmin() && 
             <NavLink to='/user-management' activeStyle={{display: "none"}}>
                 User Management
-            </NavLink>}
-
-          
-            {TokenService.hasAuthToken()
-          ? renderLogoutLink()
-          : renderLoginLink()} */}
+            </NavLink>}*/}
 
         </nav>
     )    

@@ -7,7 +7,7 @@ import Nav from './Nav/Nav'
 class Header extends Component {
   state = {
     isNavShown: false
-} 
+  } 
 
   showNav=()=> {this.setState({isNavShown: !this.state.isNavShown})}
   hideNav=()=> {this.setState({isNavShown: false})}

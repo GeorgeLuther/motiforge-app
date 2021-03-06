@@ -11,20 +11,34 @@
     background-color: #f8cfc9;
 }
 .form-inputs {
+    clear:both;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 25vh;
+    min-height: 180px;
 }
 .form-inputs div {
     margin-bottom: 20px;
 }
 .publicForm a {
+    font-weight: bold;
     color: #725659;
 }
+.publicForm a:hover {
+    color: #FC4D4D;  
+}
 
-.registration button {
+.publicForm input {
+    margin-left: 8px;
+    background-color: #FFE6E2;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #725659 2px;
+}
+.registration button, .login button {
     display: flex;
     width: 300px;
     height: 80px;
@@ -38,10 +52,11 @@
     margin: 26px auto;
     border-radius: 4px;
 }
-.registration button:hover, .registration button:focus {
+.registration button:hover, .registration button:focus,
+.login button:hover, .login button:focus {
     background-image: linear-gradient(  #725659, #583f42, #443033,  #412e31);
     cursor: pointer;
 }
-.registration {
+.registration, .login {
     background-color: #f8cfc9;
 }

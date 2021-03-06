@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Raleway&display=swap');
+
 main {
     margin-top: 40px;
     background-color: black;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+input {
+    font-family: 'Raleway Bold', Arial, Helvetica, sans-serif;
 }
 body {
     background-color: black;
