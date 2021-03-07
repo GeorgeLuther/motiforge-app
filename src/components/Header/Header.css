@@ -30,7 +30,7 @@ h1 a {
     font-weight: bold;
     font-size: 100%;
     font-family: 'Fascinate Inline', Arial, Helvetica, sans-serif;
-    background: url(../../assets/conductor-with-neons-red.jpg);
+    background: url(../../assets/conductor-with-neons-red.jpg),rgba(255, 255, 255, 0.739);
     background-size: initial;
     background-attachment: fixed;
    -webkit-text-fill-color: transparent;

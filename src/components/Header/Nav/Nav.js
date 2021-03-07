@@ -4,7 +4,6 @@ import UserContext from '../../../contexts/UserContext'
 import TokenService from '../../../services/token-service'
 import './Nav.css'
 export default class Nav extends React.Component {
-//TODO: Fix login/logout, set up conditions for rendering private links, check span  
     static contextType = UserContext
 
     handleLogoutClick = () => {
@@ -13,12 +12,28 @@ export default class Nav extends React.Component {
   
     renderLogoutLink=()=> {
       return (
+        <>
           <NavLink
             onClick={this.handleLogoutClick}
             to='/login'>
             Logout
           </NavLink>
-      )
+          <NavLink to='/dashboard' activeStyle={{display: "none"}}>
+                Dashboard
+            </NavLink>
+
+            <NavLink to='/motifs' activeStyle={{display: "none"}}>
+                Motifs
+            </NavLink>
+
+            <NavLink to='/phrases' activeStyle={{display: "none"}}>
+                Phrases
+            </NavLink>
+
+            <NavLink to='/forms' activeStyle={{display: "none"}}>
+                Forms
+            </NavLink>
+        </>)
     }
   
     renderLoginLink=()=> {
@@ -35,7 +50,6 @@ export default class Nav extends React.Component {
     }
 
 render(){
-
     return (
         <nav onMouseLeave={this.props.hideNav}>
             <span className="username">
@@ -46,25 +60,10 @@ render(){
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
             
-            <NavLink exact to='/' activeStyle={{display: "none"}}>
+            <NavLink exact to='/landing' activeStyle={{display: "none"}}>
                 Info
             </NavLink>
             
-            <NavLink to='/dashboard' activeStyle={{display: "none"}}>
-                Dashboard
-            </NavLink>
-
-            <NavLink to='/motifs' activeStyle={{display: "none"}}>
-                Motifs
-            </NavLink>
-
-            <NavLink to='/phrases' activeStyle={{display: "none"}}>
-                Phrases
-            </NavLink>
-
-            <NavLink to='/forms' activeStyle={{display: "none"}}>
-                Forms
-            </NavLink>
            
             {/* <NavLink to='/projects' activeStyle={{display: "none"}}>
                 Projects

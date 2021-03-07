@@ -8,7 +8,7 @@ nav {
     text-align: right;
     background-color: #274144;
     border-radius: 0 0 0 8px;
-    font-family: 'Raleway Bold', Arial, Helvetica, sans-serif;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
 }
 
 a, a:visited {
@@ -21,4 +21,6 @@ a:hover {
 }
 .username {
     color: #FC4D4D;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }

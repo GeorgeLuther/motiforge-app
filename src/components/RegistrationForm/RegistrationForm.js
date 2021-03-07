@@ -58,7 +58,7 @@ class RegistrationForm extends Component {
       >
         <div className="form-inputs">
           <div role='alert'>
-            {error && <p>{error}</p>}
+            {error && <p className="errorMessage">{error}</p>}
           </div>
           <div>
             <label htmlFor='registration-name-input'>

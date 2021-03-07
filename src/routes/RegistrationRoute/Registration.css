@@ -29,7 +29,10 @@
 .publicForm a:hover {
     color: #FC4D4D;  
 }
-
+.errorMessage {
+    padding-top: 26px;
+    color: #c83939;
+}
 .publicForm input {
     margin-left: 8px;
     background-color: #FFE6E2;
