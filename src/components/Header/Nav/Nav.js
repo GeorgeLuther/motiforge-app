@@ -22,15 +22,15 @@ export default class Nav extends React.Component {
                 Dashboard
             </NavLink>
 
-            <NavLink to='/motifs' activeStyle={{display: "none"}}>
+            <NavLink to='/motif' activeStyle={{display: "none"}}>
                 Motifs
             </NavLink>
 
-            <NavLink to='/phrases' activeStyle={{display: "none"}}>
+            <NavLink to='/phrase' activeStyle={{display: "none"}}>
                 Phrases
             </NavLink>
 
-            <NavLink to='/forms' activeStyle={{display: "none"}}>
+            <NavLink to='/form' activeStyle={{display: "none"}}>
                 Forms
             </NavLink>
         </>)

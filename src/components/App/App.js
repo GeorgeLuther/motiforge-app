@@ -6,6 +6,9 @@ import PublicOnlyRoute from '../../routes/PublicOnlyRoute/PublicOnlyRoute'
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import LoginRoute from '../../routes/LoginRoute/LoginRoute'
 import Dashboard from '../Dashboard/Dashboard'
+import MakeMotif from '../MakeMotif/MakeMotif'
+import MakePhrase from '../MakePhrase/MakePhrase'
+import MakeForm from '../MakeForm/MakeForm'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 import Landing from '../Landing/Landing'
@@ -33,10 +36,18 @@ export default class App extends Component {
               path={'/'}
               component={Dashboard}
             />
-            {/* <PrivateRoute
+            <PrivateRoute
               path={'/motif'}
               component={MakeMotif}
-            /> */}
+            />
+            <PrivateRoute
+              path={'/phrase'}
+              component={MakePhrase}
+            />
+            <PrivateRoute
+              path={'/form'}
+              component={MakeForm}
+            />
             <PublicOnlyRoute
               exact path={'/register'}
               component={RegistrationRoute}

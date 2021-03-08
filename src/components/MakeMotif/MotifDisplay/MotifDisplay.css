@@ -1,0 +1,57 @@
+.motif-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    margin: 0;
+}
+.motif-column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+label {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+input[type=radio] {
+    flex-grow: 1;
+    cursor: pointer;
+    padding: 0.5em;
+    -webkit-appearance: none;
+    outline-offset: 0.1em;
+    margin: 3px;
+} 
+input[type=radio]:checked {
+    display: inline-block;
+    background-color: #FFE6E2;
+}
+.btn-octave {
+     outline: 2px solid rgb(82, 39, 39);
+}
+.btn-7th {
+    background-color: #47321b;
+}
+.btn-6th {
+    background-color: #3a3915;
+}
+.btn-5th {
+    background-color: #3c5a20;
+    outline: 2px solid grey;
+} 
+.btn-4th {
+    background-color: #15595c;
+}
+.btn-3rd {
+    background-color: #1b2352;
+    outline: 2px solid grey;
+}
+.btn-2nd {
+    background-color: #481d61;
+}
+.btn-root {
+    background-color: #641515;
+    outline: 2px solid grey;
+}
