@@ -11,10 +11,10 @@ export default function Landing() {
                 </div>
                 <div className="motiforge info">
                     <p>
-                        Motiforge provides a set of tools that allow you to compose music through
-                        three main activities: motif, phrase, and form creation.  Each part is an essential building block of music. 
+                        There are many ways to make music. This app helps you explore how diverse the results can be through just one way of looking at it. Motiforge provides a set of tools that allow you to compose music through
+                        three main activities: motif, phrase, and form creation. Each part is an essential building block of music. 
                         By combining them you can assemble songs, take them apart, and put them together in different ways.
-                        Each activity provides options so can build your music from scratch, from prebuilt ideas, or let your computer compose for you!
+                        Each activity provides options so can build your music from scratch, build from prebuilt ideas, or let your computer compose for you!
                     </p>
                 </div>
                 <div className="infographic">

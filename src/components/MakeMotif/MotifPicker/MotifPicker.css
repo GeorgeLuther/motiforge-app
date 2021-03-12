@@ -1,0 +1,40 @@
+.table-headers, .table-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    
+}
+.table-headers h3 {
+    border:2px solid black;
+    font-size: 14px;
+    
+}
+.table-row span, .table-headers h3 {
+    margin: 0;
+    text-align: left;
+    border:1px solid black;
+    flex: 1;
+    padding: 8px;
+    height: 100%;
+}
+.table-row {
+    width: 100%;
+    padding: 0;
+    background-color: #FFE6E2;
+    border: none;
+}
+.odd {
+    background-color: #f8cfc9;
+}
+#selectedMotif {
+    background-color: #f06c6c;
+}
+.table-row:hover {
+    background-image: linear-gradient(#FFE6E2,#dfaca4);
+} 
+.table-row:active {
+    background-image: linear-gradient(#dfaca4,#FFE6E2);
+} 
+.table-row:focus {
+    outline: 3px solid #FC4D4D;
+}

@@ -1,57 +1,115 @@
-.motif-display {
+.motif-editor {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.motif-display-summary, .motif-display-summary p {
+    margin: auto;
+    text-align: center;
+    background-color: #FFE6E2;
+}
+.motif-display-summary {
+    padding-top: 14px;
+}
+
+.motif-btn {
+    width: 150px;
+    height: 60px;
+    margin: auto; 
+    font-family: 'Fascinate Inline','Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-image: linear-gradient( #5d4346, #4A3336, #332426, #332426);
+    color: #FFE6E2;
+    margin: 26px 0;
+    border-radius: 4px;
+}
+.motif-btn:hover, .motif-btn:focus {
+    background-image: linear-gradient(  #725659, #583f42, #443033,  #412e31);
+    cursor: pointer;
+}
+.motif-btn:active {
+    background-image: linear-gradient( #332426, #332426, #4A3336,#5d4346);
+}
+.motif-display p {
+    padding: 8px 16px;
+    max-width: 300px;
+}
+.motif-name-label {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.motif-name {
+    margin-left: 8px;
+    font-size: 18px;
+    background-color: #FFE6E2;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #725659 2px;
 }
 .motif-column {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
-label {
+.motif-column.dark {
+    background-color: rgb(170, 135, 134);
+}
+.motif-graph {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0;
+    width: 100%;
+}
+.motif-graph label {
     display: flex;
     padding: 0;
     margin: 0;
+    font-size: 0;
     flex-grow: 1;
 }
-input[type=radio] {
+.motif-display input[type=radio] {
     flex-grow: 1;
     cursor: pointer;
     padding: 0.5em;
     -webkit-appearance: none;
     outline-offset: 0.1em;
     margin: 3px;
-} 
-input[type=radio]:checked {
-    display: inline-block;
-    background-color: #FFE6E2;
+    box-shadow: 0 4px 4px -2px;
 }
-.btn-octave {
-     outline: 2px solid rgb(82, 39, 39);
+.motif-display input[type=radio]:hover {
+    background-color: brown;
+}
+.motif-display input[type=radio]:checked {
+    display: inline-block;
+    background-image: linear-gradient(#58403c,#86635e);
+    box-shadow:  none;
+}
+.motif-display label.light {
+    background-color: rgba(255, 255, 255, 0.698);
 }
 .btn-7th {
-    background-color: #47321b;
+    background-color: #ad78bd;
 }
 .btn-6th {
-    background-color: #3a3915;
+    background-color: #7d9acf;
 }
 .btn-5th {
-    background-color: #3c5a20;
-    outline: 2px solid grey;
+    background-color: #3bb678;     
 } 
 .btn-4th {
-    background-color: #15595c;
+    background-color: rgb(142, 200, 6);
 }
 .btn-3rd {
-    background-color: #1b2352;
-    outline: 2px solid grey;
+    background-color: yellow;
 }
 .btn-2nd {
-    background-color: #481d61;
+    background-color: orange;
 }
 .btn-root {
-    background-color: #641515;
-    outline: 2px solid grey;
+    background-color: red;
 }

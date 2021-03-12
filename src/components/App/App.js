@@ -37,6 +37,10 @@ export default class App extends Component {
               component={Dashboard}
             />
             <PrivateRoute
+              path={'/landing'}
+              component={Landing}
+            />
+            <PrivateRoute
               path={'/motif'}
               component={MakeMotif}
             />
