@@ -7,7 +7,6 @@ import MotifPicker from './MotifPicker/MotifPicker'
 import MotifService from '../../services/motif-service'
 
 export default class MakeMotif extends Component {
-    //IS setState re-render necessary, since the visual isn't affected?
     state = {
         motif_name: null,
         motif_id: null,
@@ -28,16 +27,20 @@ export default class MakeMotif extends Component {
             motif_name: e.currentTarget.getAttribute("motif_name"),
             motif_id: Number(e.currentTarget.getAttribute("motif_id")),
             motif: newNotes
-        }, () => console.log(this.state))
+        })
     }
-    addNewMotif=(e)=>{
+    addNewMotif=()=>{
         MotifService.addNewMotif()
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(motif => {
+                this.setState({
+                    motif_name: motif.name,
+                    motif_id: motif.id,
+                    motif: motif.notes
+                })
+            })
+            .catch(err => {
+                console.log('add mot err',err)
+            })
     }
     //addNote=()=>{
 

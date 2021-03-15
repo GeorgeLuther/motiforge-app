@@ -1,5 +1,5 @@
 const config = {
   API_ENDPOINT: 'http://localhost:8000/api',
-  TOKEN_KEY: 'blogful-client-auth-token',
+  TOKEN_KEY: 'motiforge-client-auth-token',
 }
 export default config

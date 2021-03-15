@@ -3,9 +3,10 @@ import TokenService from './token-service'
 
 const MotifService = {
     getMotifs() {
-      return fetch(`${config.API_ENDPOINT}/motif`,
-      {headers: {
-        'authorization':`bearer ${TokenService.getAuthToken()}`
+      return fetch(`${config.API_ENDPOINT}/motif`, {
+        headers: {
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+        'content-type':'application/json'
       }
     })
       .then(res =>
@@ -19,9 +20,13 @@ const MotifService = {
       method: 'POST',
       headers: {
         'authorization':`bearer ${TokenService.getAuthToken()}`,
-        'content-type':'application/json'
       },
     })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(err => Promise.reject(err))
+          : res.json()
+      )
   },
   //  getNextWord() {
   //   return fetch(`${config.API_ENDPOINT}/language/head`,
