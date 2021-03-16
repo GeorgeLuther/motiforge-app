@@ -4,23 +4,22 @@ import './MotifDisplay.css'
 export default function MotifDisplay(props) {
     return (
         <div className="motif-display">
-            <div className="motif-display-summary">
+            {!props.motifArr && <div className="motif-display-summary">
                 <h3>How it works</h3>
                 <p> It is recommended that a motif is somewhere between three and ten beats long. Each column represents a beat in the motif. Change the pitch of a note by clicking a different color option in the column. 
                     The red note represents the root note (tonic). The rows highlighted in white are chord tones. 
                     Chord tones imply resolution and work well as starting or ending notes. Non-chord tones tend to be more dissonant and imply tension. 
                     Then again, rules were made to be broken!</p>
-            </div>
+            </div>}
             <div className="motif-editor">
                 <button className="motif-btn" onClick={props.addNewMotif}>start new motif</button>
                 {props.motifArr && 
                     <label  className="motif-name-label">motif name:
-                    <input className="motif-name" defaultValue={props.motifName}></input>
+                    <input className="motif-name" defaultValue={props.motifName} onChange={props.onChangeName}></input>
                     </label>
                 }
                 <div className="motif-graph">
                 {props.motifArr && props.motifArr.map((val,idx) => {
-                    console.log(val)
                     return (
                         <div 
                             className={`motif-column${(idx%2) ? ' dark' : ''}`}
@@ -32,7 +31,12 @@ export default function MotifDisplay(props) {
                     )
                 })}
                 </div>
-                {props.motifArr && <button className="motif-btn">add new beat</button>}
+                {props.motifArr &&
+                <div className="motif-options">
+                    <button className="motif-btn" onClick={props.onAddBeat}>add new beat</button>
+                    <button className="motif-btn" onClick={props.onDeleteBeat}>delete last beat</button>
+                    <button className="motif-btn" onClick={props.deleteMotif}>delete motif</button>
+                </div>}
             </div>
         </div>
     )

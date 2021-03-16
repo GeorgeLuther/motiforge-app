@@ -37,10 +37,6 @@ export default class App extends Component {
               component={Dashboard}
             />
             <PrivateRoute
-              path={'/landing'}
-              component={Landing}
-            />
-            <PrivateRoute
               path={'/motif'}
               component={MakeMotif}
             />
@@ -56,7 +52,7 @@ export default class App extends Component {
               exact path={'/register'}
               component={RegistrationRoute}
             />
-            <PublicOnlyRoute
+            <Route
               path={'/landing'}
               component={Landing}
             />
