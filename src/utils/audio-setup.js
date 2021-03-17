@@ -3,8 +3,8 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 	const masterVolume = new Volume().toDestination()
 
 	const masterReverb = new Reverb().toDestination()
-	masterReverb.wet.value = .7
-	masterReverb.decay = 5
+	masterReverb.wet.value = .65
+	masterReverb.decay = 4
 
 	const numVoices = 4
 	
@@ -59,7 +59,7 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 		voices[`voice_${i}`].playNote = (note, velocity, time) => {
 			//TODO: implement velocity and rests
 			if (typeof note !== 'string' && note > 20) {
-				voices[`voice_${i}`].sampler.triggerAttackRelease(Frequency(note, "midi").toNote(), "8n", time, .9)
+				voices[`voice_${i}`].sampler.triggerAttackRelease(Frequency(note, "midi").toNote(), "8n", time, velocity)
 			}
 		}
 	}

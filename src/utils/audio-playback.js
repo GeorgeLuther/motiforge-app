@@ -3,21 +3,10 @@ import { voices } from './audio-setup'
 
 // convert idea to notes array
         
-    //convert modal_shift to mode
-    //convert transposition to midi
-// allow play button
+//convert modal_shift to mode
+//convert transposition to midi
+// allow play button/ prevent errors?
 // perform song
-
-// const phraseToNotes=(phrase)=>{
-//     phrase.motifs.forEach
-// }
-let playbackArr = []
-
-const motifToMidi=(notes)=>{
-    console.log(notes)
-    playbackArr = notes.map(note => note + 60)
-    console.log(playbackArr)
-}
 
 // const phraseToMidi=(phrase)=>{
 //     return phrase.motifs.map((motifId, idx)=>{
@@ -29,14 +18,30 @@ const motifToMidi=(notes)=>{
 //     })
 // }
 
+//ISSUE : ACCIDENTIAL INSTANCES OR FORGETTING ARR??
+
+let playbackArr = []
+
+const scale = [0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26,28,29,31,33,35,36,38,40,41,43,45,47,48]
+
+const motifToMidi=(notes)=>{
+    playbackArr = notes.map(note => scale[note + 12]+48)
+    playbackArr.push(null)
+    console.log('motifToMidi',playbackArr)
+}
+
 
 let beatCount = 0
-let beatIdx = beatCount % playbackArr.length
 
 const performBeat=(time)=>{
-    console.log(beatIdx)
-    console.log(playbackArr[beatIdx])
+    
+    console.log('performarr',playbackArr)
+    let beatIdx = beatCount % playbackArr.length
+    
+    console.log('performbeat', beatIdx)
+
     voices.voice_1.playNote(playbackArr[beatIdx], .9, time)
+    //voices.voice_1.playNote(60, .1, time)
     beatCount++
 }
 
