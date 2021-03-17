@@ -1,0 +1,24 @@
+.global-tempo-volume {
+    padding-right: 8px;
+    flex-direction: column;
+    align-items:flex-end;
+}
+#global-tempo {
+    width: 62px;
+    font-size: 15px;
+    color: #4A3336;
+}
+#global-tempo {
+    width: 30px;
+    font-size: 15px;
+    color: #4A3336;
+}
+.bpm-label {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: #4A3336;
+}
+.bpm-label:hover, #global-tempo:hover {
+    color: #F8A6A0;
+}

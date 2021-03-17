@@ -1,0 +1,31 @@
+.control-panel {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFE6E2;
+}
+
+.global-transport, .global-tempo-volume {
+    display: flex;
+    flex: 1;
+}
+/* .global-transport {
+    justify-content: center;
+} */
+.panel-btn {
+    padding: 0;
+    font-size: 18px;
+    border: none;
+    color: #4A3336;
+    background: none;
+}
+.panel-btn:hover {
+    color: #F8A6A0;
+}
+.motif-name {
+    font-size: 24px;
+    color: #4A3336;
+    padding: 0;
+    margin: 0;
+}

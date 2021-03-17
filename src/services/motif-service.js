@@ -28,6 +28,20 @@ const MotifService = {
           : res.json()
       )
     },
+    getMotifById(id){
+      return fetch(`${config.API_ENDPOINT}/motif/${id}`,{
+        method: 'GET',
+        headers: {
+          'authorization':`bearer ${TokenService.getAuthToken()}`,
+          'content-type':'application/json'
+        },
+      })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(err => Promise.reject(err))
+          : res.json()
+      )
+    },
     deleteMotif(id){
       return fetch(`${config.API_ENDPOINT}/motif/${id}`,{
         method: 'DELETE',

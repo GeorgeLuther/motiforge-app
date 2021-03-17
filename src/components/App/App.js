@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { context as ctx, start as startCtx} from 'tone'
 import Header from '../Header/Header'
 import PrivateRoute from '../../routes/PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from '../../routes/PublicOnlyRoute/PublicOnlyRoute'
@@ -20,8 +21,13 @@ export default class App extends Component {
     console.error(error)
     return { hasError: true }
   }
-
   render() {
+    //get user consent to use Web Audio API
+    document.documentElement.addEventListener('mousedown', () => {
+      console.log(ctx.state)
+      if (ctx.state !== 'running') startCtx();
+    });
+
     const { hasError } = this.state
     return (
       <div className='App'>

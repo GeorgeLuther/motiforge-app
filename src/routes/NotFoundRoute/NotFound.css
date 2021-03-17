@@ -1,0 +1,13 @@
+.not-found {
+    height: 100vh;
+    background-image: url(../../assets/broken-piano.jpg);
+    background-size: cover;
+    padding-top: 16px;
+}
+
+.not-found p {
+    display: flex;
+    justify-content: center;
+    background-color: #FFE6E2;
+    padding: 24px;
+}

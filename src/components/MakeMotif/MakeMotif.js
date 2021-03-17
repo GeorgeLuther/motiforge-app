@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import MotifDisplay from './MotifDisplay/MotifDisplay'
-import './MakeMotif.css'
 import Accordion from '../Accordion/Accordion'
 import MotifGeneration from './MotifGeneration/MotifGeneration'
 import MotifPicker from './MotifPicker/MotifPicker'
 import MotifService from '../../services/motif-service'
+import ControlPanel from '../ControlPanel/ControlPanel'
+import { motifToMidi } from '../../utils/audio-playback'
 
 export default class MakeMotif extends Component {
     state = {
@@ -13,6 +14,7 @@ export default class MakeMotif extends Component {
         motif: null,
     }
     updateMotif=()=>{
+        motifToMidi(this.state.motif)
         let newData = {
             name: this.state.motif_name,
             notes: this.state.motif
@@ -49,7 +51,7 @@ export default class MakeMotif extends Component {
             motif_name: e.currentTarget.getAttribute("motif_name"),
             motif_id: Number(e.currentTarget.getAttribute("motif_id")),
             motif: newNotes
-        })
+        }, ()=> motifToMidi(this.state.motif))
     }
     addNewMotif=()=>{
         MotifService.addNewMotif()
@@ -77,7 +79,7 @@ export default class MakeMotif extends Component {
     render(){
         return (
             <section className="make-motif">
-    
+                <ControlPanel name={this.state.motif_name}/>
                 <Accordion 
                     groupName="make-motif"
                     headerTextArr={["Select Motif","Draw Motif","Generate Motif"]}

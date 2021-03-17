@@ -1,0 +1,25 @@
+#loop {
+    width: 46px;
+    padding: 0 8px;
+}
+#back, #forth {
+    width: 52px;
+    padding: 0 8px;
+}
+#play {
+    width: 48px;
+    padding: 0 8px;
+    color: #4A3336;
+}
+#play:hover {
+    color: #F8A6A0;
+}
+.fa-sync-alt {
+    font-size: 28px;
+}
+.fa-backward, .fa-forward {
+    font-size: 34px;
+}
+.fa-play, .fa-pause {
+    font-size: 27px;
+}
