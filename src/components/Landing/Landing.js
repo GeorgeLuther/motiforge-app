@@ -46,10 +46,10 @@ export default function Landing() {
                     <h2>FORMS</h2>
                 </div>
                 <p>
-                    Form is the big-picture of a song; the overall structure. The form creator lets you
+                    Form is the big-picture of a song; the overall structure. The form creator will let you
                     put phrases into sections and determine the pitch that will be its home-base. By connecting sections 
-                    you can create and listen to full compositions! You can even press a single button and have a brand new composition written and performed for you.
-                    In future versions more techniques will be made available to create more complex and dynamic compositions.
+                    you will create and listen to full compositions! You can even press a single button and have a brand new composition written and performed for you.
+                    In future versions more techniques will be made available to create more complex, rhythmically involved, and dynamic compositions.
                 </p>
             </div>
         </section>

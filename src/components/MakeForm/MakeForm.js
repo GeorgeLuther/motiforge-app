@@ -1,131 +1,65 @@
 import React, { Component } from 'react'
 // import MotifDisplay from './MotifDisplay/MotifDisplay'
-// import Accordion from '../Accordion/Accordion'
+import Accordion from '../Accordion/Accordion'
 // import MotifGeneration from './MotifGeneration/MotifGeneration'
 // import MotifPicker from './MotifPicker/MotifPicker'
 // import MotifService from '../../services/motif-service'
 // import ControlPanel from '../ControlPanel/ControlPanel'
 // import { motifToMidi } from '../../utils/audio-playback'
 // import MotifMethods from '../../utils/motif-methods'
-//import './MakeMotif.css'
+import { Transport, start } from 'tone'
+import duo from '../../composers/phrase-form-trio'
+import trio from '../../composers/simple-trio'
+import quartet from '../../composers/simple-quartet'
+import performer from '../../composers/motific'
+
+import './MakeForm.css'
 
 export default class MakeForm extends Component {
     state = {
-        motif_name: null,
-        motif_id: null,
-        motif: [],
+        selection: 2,
     }
-    // updateMotif=()=>{
-    //     motifToMidi(this.state.motif)
-    //     let newData = {
-    //         name: this.state.motif_name,
-    //         notes: this.state.motif
-    //     }
-    //     MotifService.editMotif(this.state.motif_id, newData)
-    // }
-    // onChangeNote=(e)=>{
-    //     const newNote = Number(e.target.value)
-    //     const newMotif = [...this.state.motif]
-    //     let beatIdx = e.target.name
-    //     beatIdx = Number(beatIdx.split("beat-")[1])
-    //     newMotif.splice(beatIdx, 1, newNote)
-    //     this.setState({motif: newMotif}, ()=> this.updateMotif())
-    // }
-    // onAddBeat=()=>{
-    //     this.setState({motif: [...this.state.motif,0]}, ()=> this.updateMotif())
-    // }
-    // onDeleteBeat=()=>{
-    //     if (this.state.motif.length > 2) {
-    //         const newMotif =  [...this.state.motif]
-    //         newMotif.pop()
-    //         this.setState({motif: newMotif}, ()=> this.updateMotif())            
-    //     } else {
-    //         alert('motifs must have at least two notes')
-    //     }
-    // }
-    // onChangeName=(e)=>{
-    //     this.setState({motif_name: e.target.value},()=> this.updateMotif())
-    // }
-    // onSelectMotif=(e)=>{
-    //     const newNotes = e.currentTarget.getAttribute("notes").split(',').map(note => Number(note))
+    playNote=(time)=>{
+        if (this.state.selection === 0) {
+          duo(time)
+        }
+        if (this.state.selection === 1) {
+          trio(time)
+        }
+        if (this.state.selection === 2) {
+          quartet(time)
+        }
+        if (this.state.selection === 3) {
+          performer(time)
+        }
+    }
+
+    toggleTransport=()=>{
+        start()
+        Transport.toggle()
+    }
+
+    setSelection=(e)=>{
+        this.setState({selection: Number(e.target.value)})
+    }
+
     
-    //     this.setState({
-    //         motif_name: e.currentTarget.getAttribute("motif_name"),
-    //         motif_id: Number(e.currentTarget.getAttribute("motif_id")),
-    //         motif: newNotes
-    //     }, ()=> motifToMidi(this.state.motif))
-    // }
-    // addNewMotif=()=>{
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             this.setState({
-    //                 motif_name: motif.name,
-    //                 motif_id: motif.id,
-    //                 motif: motif.notes
-    //             }, ()=> motifToMidi(this.state.motif))
-    //         })
-    //         .catch(err => {
-    //             console.log('Error adding motif',err)
-    //         })
-    // }
-    // deleteMotif=()=>{
-    //     //TODO: Add alert modal to confirm 
-    //     MotifService.deleteMotif(this.state.motif_id)
-    //     this.setState({
-    //         motif_name: null,
-    //         motif_id: null,
-    //         motif: null,
-    //     })
-    //     motifToMidi([])
-    // }
-    // applyNote=(e)=>{
-    //     if (this.state.motif && this.state.motif.length > 0) {
-    //         const motif = [...this.state.motif]
-    //         const idea = MotifMethods[e.target.value](motif)
-    //         motif.push(idea)
-    //         this.setState({motif: motif}, ()=> this.updateMotif())    
-    //     } else {
-    //         alert('Select a motif from Select Motif or start a new motif in Draw Motif')
-    //     }
-    // }
-    // generateMotif=(e)=>{
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             const renderedNotes = MotifMethods[e.target.value]()
-    //             this.setState({
-    //                 motif_name: `generated-${e.target.value}`,
-    //                 motif_id: motif.id,
-    //                 motif: renderedNotes
-    //             }, ()=> this.updateMotif())
-    //         })
-    //         .catch(err => {
-    //             console.log('Error generating motif',err)
-    //         })
-    // }
-    // applyVariation=(e)=>{
-    //     const variation = MotifMethods[e.target.value](this.state.motif)
-    //     const originalName = this.state.motif_name
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             this.setState({
-    //                 motif_name: `${originalName}-var-${e.target.value}`,
-    //                 motif_id: motif.id,
-    //                 motif: variation
-    //             }, ()=> this.updateMotif())
-    //         })
-    //         .catch(err => {
-    //             console.log('Error generating motif',err)
-    //         })
-    // }
+    componentDidMount() {
+        Transport.scheduleRepeat((time)=>{
+            this.playNote(time)
+        }, "8n")
+    }
     render(){
         return (
-            <section className="make-motif">
-                {/* <ControlPanel name={this.state.motif_name}/>
+            <section className="make-form">
+                {/* <ControlPanel name={this.state.motif_name}/> */}
                 <Accordion 
                     groupName="make-motif"
-                    headerTextArr={["Select Motif","Draw Motif","Generate Motif"]}
-                >
-                    <MotifPicker 
+                    headerTextArr={["Generate Forms"]}
+                    // headerTextArr={["Select Motif","Draw Motif","Generate Motif"]}
+                >   
+                    <div></div>
+                    {/* <MotifPicker 
                         selectedId={this.state.motif_id}
                         onClickMotif={this.onSelectMotif}
                     />
@@ -143,8 +77,38 @@ export default class MakeForm extends Component {
                         applyNote={this.applyNote}
                         applyMotif={this.generateMotif}
                         applyVariation={this.applyVariation}
-                    />
-                </Accordion> */}
+                    /> */}
+                </Accordion>
+                <div className="form-info">
+                        <p>Form is the big-picture of a song; the overall structure. The form creation tools are currently in development. The options and available approaches here will be much like the existing creation tools.
+                        Eventually users should be able to guide the composition process or leave it completely up to the machine. For more information visit the info page or explore the<a href='https://github.com/GeorgeLuther/motiforge-app'>readme.</a> 
+                        </p>
+                        <p>While the advanced features are not yet available, the options below will compose a brand new song using approaches similar to those you can expect to have access to in future versions.
+                        </p>
+                        <button onClick={this.toggleTransport}>
+                            play / pause
+                        </button>
+
+                        <button value={0} onClick={this.setSelection}>
+                            robot one
+                        </button>
+
+                        <button value={1} onClick={this.setSelection}>
+                            robot two
+                        </button>
+
+
+                        <button value={2} onClick={this.setSelection}>
+                            robot three
+                        </button>
+
+                        <button value={3} onClick={this.setSelection}>
+                            robot four
+                        </button>
+
+                        <a href="/forms">new composition</a>
+
+                </div>
             </section>
         )
     }

@@ -130,3 +130,67 @@ When note, motif, and phrase are encapsulated, this will use the same technique 
 #### Combine?:
 Methods should be created that combine multiple motifs in various ways such as interlacing.
 
+## Phrase Page
+
+In the phrase creator you can select a phrase to work on from a list of your phrases. This page works much the same way as the motif page, but instead of notes you are manipulation motifs. We can produce familiarity and order by putting motifs into patterns. A phrase is a larger melodic idea made from multiple motifs.
+The phrase creator will assist you in building phrases from repeated motifs and variations thereof. You can make things more interesting by with harmony. Modal harmony is made possible here by shifting the pitch of motifs so they fit with certain notes. This progression of pitch contexts creates a sense of tension and release. 
+
+
+### Generate Phrases: 
+#### These functions will be used to generate arrays of phrases.
+
+- []
+### makePhrase: 
+Creates a pattern of motifs and applies a harmonic progression.
+1. Determines the motifs and variations that will be used.
+2. Create a chord progression proportionate to the motific complexity of the phrase. (Currently 1 chord per motif. In future versions more consideration should be given to what is implied by the motif.)
+3. Shift motifs via chord progression and concatenate into phrase.
+4. Add phrase to phrases array.
+- []
+### imitatePhrase:
+Creates a pattern of motifs that follows the same structure of repetition and variation as another phrase but uses a different set of motifs
+
+## Manipulate Phrases:
+### These functions allows for variations of phrases. These ideas are being brainstormed. They will likely be similar if not combined with the motif manipulations.
+
+### Reverse: flips a phrase from end to start
+1,2,3,4,5 becomes 5,4,3,2,1
+
+### Mirror: the original phrase followed by its reverse, including or excluding its apex
+1,2,3,4,4,3,2,1 or 1,2,3,4,3,2,1
+
+### Shuffle: randomly redistributes motifs in the phrase
+1,2,3,4,5 becomes 1,4,2,3,5
+
+### Rondo: a phrase keeps repeating periodically and may bookend the phrase
+I.e 1,2,3,4,5,6,7,8 becomes 1,2,3,1,4,5,1,6,7,1,8
+2,3,4,5,6 becomes 1,2,1,3,1,4,1,5,1,6,1
+
+### Braid: distributes a part of the existing phrase into itself 
+create motif sequence from the existing phrase
+random order
+start from beginning, linear
+start from end, linear
+grab a chunk
+
+###distribute this sequence of motifs into the existing phrase
+distribute evenly
+distribute randomly (not recommended)
+start from beginning, linear
+start from end, linear
+chunks
+
+
+### Generate Modal Shifts:
+
+Modal shifts will be determined based on the circle of fifths and markov chains developed from common chord progressions.
+
+
+## Form Page
+
+The form page currently shows a few sketches of generative composition algorithms and a brief explanation of the concept.
+Forms are created here through a system of rules, ranges, and randomness. This particular version attempts to apply a bottom-up approach to composition. We build small motifs and variations thereof. Then, given a harmonic structure these motifs are concatenated into larger phrases and variations thereof. These phrases are similarly concatenated into sections with consideration of tonal centers. Finally, the sections are concatenated into the formal structure of the piece and it is then performed.
+
+## Installation
+
+Installing this app follows the standard methods for a react app. npm i, npm start.

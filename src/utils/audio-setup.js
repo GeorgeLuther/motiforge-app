@@ -6,7 +6,7 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 	const masterReverb = new Reverb()
 	masterReverb.wet.value = .65
 	masterReverb.decay = 4
-
+	masterVolume.volume.value = -35
 	const numVoices = 4
 	
 	const voices = {
@@ -58,6 +58,7 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 		}).chain(masterReverb, masterVolume)
 
 		voices[`voice_${i}`].playNote = (note, velocity, time) => {
+			if (velocity > 126) velocity = 126
 			//TODO: implement velocity and rests
 			if (typeof note !== 'string' && note > 20) {
 				voices[`voice_${i}`].sampler.triggerAttackRelease(Frequency(note, "midi").toNote(), "8n", time, velocity)

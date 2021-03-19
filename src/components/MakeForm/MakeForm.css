@@ -1,0 +1,23 @@
+.make-form {
+    height: 100vh;
+    background-image: url("../../assets/music-notes-on-wall.jpg");
+    background-size: cover;
+}
+.form-info {
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #FFE6E2;
+    min-height: 35vh;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.form-info p {
+    max-width: 320px;
+}
+.form-info a {
+    color: #00565f;
+}
+.form-info a:hover {
+    color: #f29090;
+}
