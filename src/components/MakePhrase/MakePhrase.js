@@ -1,75 +1,106 @@
 import React, { Component } from 'react'
-// import MotifDisplay from './MotifDisplay/MotifDisplay'
-// import Accordion from '../Accordion/Accordion'
-// import MotifGeneration from './MotifGeneration/MotifGeneration'
-// import MotifPicker from './MotifPicker/MotifPicker'
-// import MotifService from '../../services/motif-service'
-// import ControlPanel from '../ControlPanel/ControlPanel'
-//import { phraseToMidi } from '../../utils/audio-playback'
+import PhraseService from '../../services/phrase-service'
+import MotifService from '../../services/motif-service'
 //import PhraseMethods from '../../utils/phrase-methods'
-//import './MakeMotif.css'
+import { phraseToMidi } from '../../utils/audio-playback'
+import Accordion from '../Accordion/Accordion'
+import ControlPanel from '../ControlPanel/ControlPanel'
+import PhrasePicker from './PhrasePicker/PhrasePicker'
+import PhraseDisplay from './PhraseDisplay/PhraseDisplay'
+
+// import MotifGeneration from './MotifGeneration/MotifGeneration'
+import './MakePhrase.css'
 
 export default class MakePhrase extends Component {
     state = {
         phrase_name: null,
         phrase_id: null,
         motifs: [],
-        modal_shifts: []
+        modal_shifts: [],
+        allMotifs: [],
+        motifOption: null,
+    }
+    componentDidMount(){
+        MotifService.getMotifs()
+            .then(motifArr => {
+                const motifInfo = motifArr.map(motif => {
+                    return { id: motif.id, name: motif.name }
+                })
+                this.setState({allMotifs: motifInfo})
+            })
     }
     updatePhrase=()=>{
-        //motifToMidi(this.state.motif)
+        phraseToMidi(this.state.motifs, this.state.modal_shifts)
         let newData = {
             name: this.state.phrase_name,
             motifs: this.state.motifs,
             modal_shifts: this.state.modal_shifts
         }
-        PhraseService.editPhrase(this.state.motif_id, newData)
+        PhraseService.editPhrase(this.state.phrase_id, newData)
     }
-    // onChangeNote=(e)=>{
-    //     const newNote = Number(e.target.value)
-    //     const newMotif = [...this.state.motif]
-    //     let beatIdx = e.target.name
-    //     beatIdx = Number(beatIdx.split("beat-")[1])
-    //     newMotif.splice(beatIdx, 1, newNote)
-    //     this.setState({motif: newMotif}, ()=> this.updateMotif())
-    // }
-    // onAddBeat=()=>{
-    //     this.setState({motif: [...this.state.motif,0]}, ()=> this.updateMotif())
-    // }
-    // onDeleteBeat=()=>{
-    //     if (this.state.motif.length > 2) {
-    //         const newMotif =  [...this.state.motif]
-    //         newMotif.pop()
-    //         this.setState({motif: newMotif}, ()=> this.updateMotif())            
-    //     } else {
-    //         alert('motifs must have at least two notes')
-    //     }
-    // }
-    // onChangeName=(e)=>{
-    //     this.setState({motif_name: e.target.value},()=> this.updateMotif())
-    // }
-    // onSelectMotif=(e)=>{
-    //     const newNotes = e.currentTarget.getAttribute("notes").split(',').map(note => Number(note))
-    
-    //     this.setState({
-    //         motif_name: e.currentTarget.getAttribute("motif_name"),
-    //         motif_id: Number(e.currentTarget.getAttribute("motif_id")),
-    //         motif: newNotes
-    //     }, ()=> motifToMidi(this.state.motif))
-    // }
-    // addNewMotif=()=>{
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             this.setState({
-    //                 motif_name: motif.name,
-    //                 motif_id: motif.id,
-    //                 motif: motif.notes
-    //             }, ()=> motifToMidi(this.state.motif))
-    //         })
-    //         .catch(err => {
-    //             console.log('Error adding motif',err)
-    //         })
-    // }
+    onSelectPhrase=(e)=>{
+        const newMotifs = e.currentTarget.getAttribute("motifs").split(',').map(motif => Number(motif))
+        const newShifts = e.currentTarget.getAttribute("modal_shifts").split(',').map(modal_shifts => Number(modal_shifts))
+
+        this.setState({
+            phrase_name: e.currentTarget.getAttribute("motif_name"),
+            phrase_id: Number(e.currentTarget.getAttribute("motif_id")),
+            motifs: newMotifs,
+            modal_shifts: newShifts,
+        }, ()=> phraseToMidi(newMotifs, newShifts))
+    }
+    onChangeMode=(e)=>{
+        console.log(e.target.value)
+        const newMode = Number(e.target.value)
+        const newModeArr = [...this.state.modal_shifts]
+        let beatIdx = e.target.name
+        beatIdx = Number(beatIdx.split("beat-")[1])
+        newModeArr.splice(beatIdx, 1, newMode)
+        this.setState({modal_shifts: newModeArr}, ()=> this.updatePhrase())
+    }
+    onSelectMotif=(e)=>{
+        this.setState({motifOption: e.target.value})
+    }
+    onAddMotif=()=>{
+        if (this.state.motifOption && this.state.phrase_id) {
+            this.setState({motifs: [...this.state.motifs, Number(this.state.motifOption)]}, ()=> this.updatePhrase())
+        } else {
+            alert('Please select a motif from your motifs dropdown.')
+        }
+        
+    }
+    onDeleteMotif=()=>{
+        if (this.state.motifs.length > 0 && this.state.phrase_id) {
+            const newMotifs =  [...this.state.motifs]
+            newMotifs.pop()
+            this.setState({motifs: newMotifs}, ()=> this.updatePhrase())            
+        } else {
+            alert('Phrase cannot have any fewer motifs')
+        }
+    }
+    onChangeName=(e)=>{
+        if (this.state.phrase_id !== null) {
+            this.setState({phrase_name: e.target.value},()=> this.updatePhrase())
+        } else {
+            alert('Please add or select a phrase first.')
+        }
+    }
+
+    addNewPhrase=()=>{
+        PhraseService.addNewPhrase()
+            .then(phrase => {
+                console.log(phrase.motifs)
+                this.setState({
+                    phrase: phrase.name,
+                    phrase_id: phrase.id,
+                    motifs: phrase.motifs,
+                    modal_shifts: phrase.modal_shifts
+                }, ()=> phraseToMidi(phrase.motifs, phrase.modal_shifts))
+            })
+            .catch(err => {
+                console.log('Error adding motif',err)
+            })
+    }
     // deleteMotif=()=>{
     //     //TODO: Add alert modal to confirm 
     //     MotifService.deleteMotif(this.state.motif_id)
@@ -121,32 +152,39 @@ export default class MakePhrase extends Component {
     // }
     render(){
         return (
-            <section className="make-motif">
-                {/* <ControlPanel name={this.state.motif_name}/>
+            <section className="make-phrase">
+                <ControlPanel name={this.state.phrase_name}/>
                 <Accordion 
-                    groupName="make-motif"
-                    headerTextArr={["Select Motif","Draw Motif","Generate Motif"]}
+                    groupName="make-phrase"
+                    headerTextArr={["Select Phrase","Shift Phrase","Generate Phrase"]}
                 >
-                    <MotifPicker 
-                        selectedId={this.state.motif_id}
-                        onClickMotif={this.onSelectMotif}
+                    <PhrasePicker 
+                        selectedId={this.state.phrase_id}
+                        onClickPhrase={this.onSelectPhrase}
                     />
-                    <MotifDisplay
-                        motifArr={this.state.motif}
-                        motifName={this.state.motif_name}
-                        onChangeNote={this.onChangeNote}
+                    <PhraseDisplay
+                        phraseArr={this.state.motifs}
+                        shiftArr={this.state.modal_shifts}
+                        allMotifs={this.state.allMotifs}
+                        phraseName={this.state.phrase_name}
+                        onSelectMotif={this.onSelectMotif}
+                        onAddMotif={this.onAddMotif}
+
+                        addNewPhrase={this.addNewPhrase}
+
+                        onChangeMode={this.onChangeMode}
                         onChangeName={this.onChangeName}
-                        onAddBeat={this.onAddBeat}
-                        onDeleteBeat={this.onDeleteBeat}
+                        
+                        onDeleteMotif={this.onDeleteMotif}
                         addNewMotif={this.addNewMotif}
                         deleteMotif={this.deleteMotif}
                     />
-                    <MotifGeneration
+                    {/* <MotifGeneration
                         applyNote={this.applyNote}
                         applyMotif={this.generateMotif}
                         applyVariation={this.applyVariation}
-                    />
-                </Accordion> */}
+                    /> */}
+                </Accordion>
             </section>
         )
     }

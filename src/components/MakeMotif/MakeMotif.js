@@ -44,7 +44,12 @@ export default class MakeMotif extends Component {
         }
     }
     onChangeName=(e)=>{
-        this.setState({motif_name: e.target.value},()=> this.updateMotif())
+        if (this.state.motif_id !== null) {
+            this.setState({motif_name: e.target.value},()=> this.updateMotif())
+        } else {
+            alert('Please add or select a motif first.')
+        }
+        
     }
     onSelectMotif=(e)=>{
         const newNotes = e.currentTarget.getAttribute("notes").split(',').map(note => Number(note))
