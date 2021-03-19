@@ -1,4 +1,5 @@
 //import MotifService from '../services/motif-service'
+import MotifService from '../services/motif-service'
 import { voices } from './audio-setup'
 
 // convert idea to notes array        
@@ -30,6 +31,17 @@ const motifToMidi=(notes)=>{
     playbackArr.push(null)
 }
 
+const phraseToMidi=(motifs, modal_shifts)=>{
+    motifs.forEach((motif, idx) => {
+        MotifService.getMotifById(motif)
+            .then(motif => {
+                motif.notes.forEach(note => {
+                    playbackArr.push(note + modal_shifts[idx])
+                })
+                playbackArr.push(null)
+            })
+    })
+}
 
 let beatCount = 0
 

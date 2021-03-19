@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 // import MotifPicker from './MotifPicker/MotifPicker'
 // import MotifService from '../../services/motif-service'
 // import ControlPanel from '../ControlPanel/ControlPanel'
-//import { motifToMidi } from '../../utils/audio-playback'
+//import { phraseToMidi } from '../../utils/audio-playback'
 //import PhraseMethods from '../../utils/phrase-methods'
 //import './MakeMotif.css'
 
@@ -23,7 +23,7 @@ export default class MakePhrase extends Component {
             motifs: this.state.motifs,
             modal_shifts: this.state.modal_shifts
         }
-        //PhraseService.editPhrase(this.state.motif_id, newData)
+        PhraseService.editPhrase(this.state.motif_id, newData)
     }
     // onChangeNote=(e)=>{
     //     const newNote = Number(e.target.value)
