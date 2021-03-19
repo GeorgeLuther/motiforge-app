@@ -21,11 +21,19 @@ Users can create music from its basic building blocks:
 
 In the motif creator you can select a motif to work on from a list of your motifs. 
 
+![ScreenShot-Select-Motif](https://raw.githubusercontent.com/GeorgeLuther/readme-images/main/select-motif.jpg)
+
 Once selected you can play back your idea with the play button. It will play on repeat with a break between each play through until paused.
+
+![ScreenShot-PlayButton](https://raw.githubusercontent.com/GeorgeLuther/readme-images/main/play-motif.jpg)
 
 Work on ideas by hand using the 'Draw Mode'. In this area you can edit the pitch of each note by selecting a different color. You can also add and delete beats or delete the entire motif with the options at the bottom.
 
+![ScreenShot-Draw-Mode](https://raw.githubusercontent.com/GeorgeLuther/readme-images/main/draw-motif.jpg)
+
 An alternative approach to creating motifs is to select an option in the 'Generate Motif' area. You may add individual notes to a motif, generate a whole new motif, or generate a variation on the motif. 
+
+![ScreenShot-Generate-Motif](https://raw.githubusercontent.com/GeorgeLuther/readme-images/main/generate-motif.jpg)
 
 These techniques are part of a long term goal of the project to provide a framework for human guided computer generated music. The functions at play are described below.
 
