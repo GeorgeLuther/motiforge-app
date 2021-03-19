@@ -1,8 +1,11 @@
 import React from 'react'
-import { Transport as transportCtx, loaded as loadedCtx, start} from 'tone'
-import { performBeat } from '../../../utils/audio-playback'
+import { Transport as transportCtx, loaded as loadedCtx} from 'tone'
+import { performBeat, clearPlaybackArr } from '../../../utils/audio-playback'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Transport.css'
+
+
+//TODO: Move transport to playback context or up component tree so it isnt reloaded on page change
 
 export default class Transport extends React.Component {
     state = {
@@ -10,16 +13,17 @@ export default class Transport extends React.Component {
         isPlaying: false,
     }
     globalPlay=()=>{
-        
         transportCtx.toggle()
         this.setState({isPlaying: !this.state.isPlaying})
     }
+    eventId
     componentDidMount(){
         //transport and samplers are loaded
         loadedCtx().then(() => {
 
             this.setState({isReady: true})
-            transportCtx.scheduleRepeat((time)=>{
+            
+            this.eventId = transportCtx.scheduleRepeat((time)=>{
                 performBeat(time)
             }, "8n")
         });
@@ -39,5 +43,10 @@ export default class Transport extends React.Component {
                 <h2>loading...</h2>
             </div>
         )   
+    }
+    componentWillUnmount(){
+        transportCtx.cancel()
+        transportCtx.stop()
+        clearPlaybackArr()
     }
 }

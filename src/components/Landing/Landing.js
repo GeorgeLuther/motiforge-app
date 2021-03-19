@@ -26,9 +26,9 @@ export default function Landing() {
                     <h2>MOTIFS</h2>
                 </div>
                 <p>
-                    Motifs are short melodic ideas. They can be thought of the basic building blocks of music.
+                    Motifs are short melodic ideas. They can be thought of as the smallest segment of a song.
                     In the motif creator you can work on ideas by hand using the piano roll or you can set some rules and let the computer write for you.
-                    You can create new ideas, variations on your own ideas, or share your ideas and collaborate with others.
+                    You can create new ideas, edit them, add variations on your ideas, and you will soon be able share your ideas and collaborate with others.
                 </p>
             </div>
             <div className="phrase summary">

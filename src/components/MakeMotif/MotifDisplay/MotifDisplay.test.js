@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ControlPanel from './ControlPanel'
+import MotifDisplay from './MotifDisplay'
 
 
 it('renders without crashing',()=>{
   const div = document.createElement('div')
-  ReactDOM.render(<ControlPanel/>,div)
+  ReactDOM.render(<MotifDisplay/>,div)
   ReactDOM.unmountComponentAtNode(div)
 })

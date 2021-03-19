@@ -8,13 +8,14 @@ export default class TempoVolume extends Component {
         isVolumeSliderShown: false,
         isTempoSliderShown: false,
         tempo: 135,
-        volume: -35,
+        volume: 0,
     }
     showVolumeSlider=()=>{
         this.setState({isVolumeSliderShown: !this.state.isVolumeSliderShown})
     }
     handleVolumeSlider=(e)=>{
-        masterVolume.volume.value = (e.target.value)
+        console.log(e.target.value)
+        masterVolume.volume.value = Number(e.target.value)
         this.setState({volume: e.target.value})
     }
     showTempoSlider=()=>{
@@ -27,13 +28,13 @@ export default class TempoVolume extends Component {
     render() {
         return (
             <div className="global-tempo-volume">
-                <div>
+                <div className="volume-ctrl">
                     {this.state.isVolumeSliderShown && 
                     <input 
                         id="global-volume-slider" 
                         type="range" 
-                        min={-100}
-                        max={0}
+                        min={-50}
+                        max={10}
                         aria-label="volume slider" 
                         defaultValue={this.state.volume}
                         onChange={this.handleVolumeSlider}
@@ -46,7 +47,7 @@ export default class TempoVolume extends Component {
                             <FontAwesomeIcon icon="volume-up"/>
                     </button>
                 </div>
-                <div>
+                <div className="tempo-ctrl">
                     {this.state.isTempoSliderShown &&
                     <input 
                         id="global-tempo-slider" 

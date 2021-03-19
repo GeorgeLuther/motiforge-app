@@ -44,7 +44,7 @@ function Tab(props){
                 onClick={props.handleOpenTab}
             >
                 <h2>{props.title}</h2>
-                <span>{isOpen ? "▼" : "►"}</span>
+                {/* <span>{isOpen ? "▼" : "►"}</span> */}
             </button>
             {isOpen && 
                 <div className="tab-content">

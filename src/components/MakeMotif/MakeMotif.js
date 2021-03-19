@@ -6,12 +6,14 @@ import MotifPicker from './MotifPicker/MotifPicker'
 import MotifService from '../../services/motif-service'
 import ControlPanel from '../ControlPanel/ControlPanel'
 import { motifToMidi } from '../../utils/audio-playback'
+import MotifMethods from '../../utils/motif-methods'
+import './MakeMotif.css'
 
 export default class MakeMotif extends Component {
     state = {
         motif_name: null,
         motif_id: null,
-        motif: null,
+        motif: [],
     }
     updateMotif=()=>{
         motifToMidi(this.state.motif)
@@ -60,10 +62,10 @@ export default class MakeMotif extends Component {
                     motif_name: motif.name,
                     motif_id: motif.id,
                     motif: motif.notes
-                })
+                }, ()=> motifToMidi(this.state.motif))
             })
             .catch(err => {
-                console.log('add mot err',err)
+                console.log('Error adding motif',err)
             })
     }
     deleteMotif=()=>{
@@ -74,8 +76,47 @@ export default class MakeMotif extends Component {
             motif_id: null,
             motif: null,
         })
+        motifToMidi([])
     }
-
+    applyNote=(e)=>{
+        if (this.state.motif && this.state.motif.length > 0) {
+            const motif = [...this.state.motif]
+            const idea = MotifMethods[e.target.value](motif)
+            motif.push(idea)
+            this.setState({motif: motif}, ()=> this.updateMotif())    
+        } else {
+            alert('Select a motif from Select Motif or start a new motif in Draw Motif')
+        }
+    }
+    generateMotif=(e)=>{
+        MotifService.addNewMotif()
+            .then(motif => {
+                const renderedNotes = MotifMethods[e.target.value]()
+                this.setState({
+                    motif_name: `generated-${e.target.value}`,
+                    motif_id: motif.id,
+                    motif: renderedNotes
+                }, ()=> this.updateMotif())
+            })
+            .catch(err => {
+                console.log('Error generating motif',err)
+            })
+    }
+    applyVariation=(e)=>{
+        const variation = MotifMethods[e.target.value](this.state.motif)
+        const originalName = this.state.motif_name
+        MotifService.addNewMotif()
+            .then(motif => {
+                this.setState({
+                    motif_name: `${originalName}-var-${e.target.value}`,
+                    motif_id: motif.id,
+                    motif: variation
+                }, ()=> this.updateMotif())
+            })
+            .catch(err => {
+                console.log('Error generating motif',err)
+            })
+    }
     render(){
         return (
             <section className="make-motif">
@@ -99,7 +140,9 @@ export default class MakeMotif extends Component {
                         deleteMotif={this.deleteMotif}
                     />
                     <MotifGeneration
-                        motifArr={this.state.motif}
+                        applyNote={this.applyNote}
+                        applyMotif={this.generateMotif}
+                        applyVariation={this.applyVariation}
                     />
                 </Accordion>
             </section>

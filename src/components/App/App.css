@@ -2,6 +2,7 @@
 
 main {
     margin-top: 50px;
+    width: 100vw;
     background-color: black;
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
 }
@@ -10,4 +11,5 @@ input {
 }
 body {
     background-color: #1d1617;
+    width: 100vw;
 }

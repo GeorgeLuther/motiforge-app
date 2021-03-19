@@ -24,7 +24,6 @@ export default class App extends Component {
   render() {
     //get user consent to use Web Audio API
     document.documentElement.addEventListener('mousedown', () => {
-      console.log(ctx.state)
       if (ctx.state !== 'running') startCtx();
     });
 

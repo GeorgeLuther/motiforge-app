@@ -1,0 +1,41 @@
+.method-options {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    max-width: 320px;
+}
+.method-options label {
+    padding: 8px 0;
+}
+.about-method {
+    width: 100%;
+    background-color: #FFE6E2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-method p {
+    padding: 0 16px;
+}
+.method-btn {
+    margin-right: 16px;
+    font-family: 'Raleway';
+    font-size: 16px;
+    background-image: linear-gradient(  #5d4346, #4A3336, #332426,  #332426);
+    color: #FFE6E2;
+    width: 10em;
+    height: 2em;
+    border-radius: 4px;
+}
+.method-btn:hover, .method-btn:focus {
+    background-image: linear-gradient(  #725659, #583f42, #443033,  #412e31);
+    cursor: pointer;
+}
+.method-btn:active {
+    background-image: linear-gradient(#332426, #332426, #4A3336, #5d4346)
+}
+.note-by-note, .spawn-motif, .alter-motif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

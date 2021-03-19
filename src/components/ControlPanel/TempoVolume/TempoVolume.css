@@ -18,7 +18,13 @@
     margin: 0;
     font-size: 15px;
     color: #4A3336;
+    display: flex;
+    flex-direction: row;
 }
 .bpm-label:hover, #global-tempo:hover {
     color: #F8A6A0;
+}
+.volume-ctrl, .tempo-ctrl {
+    display: flex;
+    flex-direction: row;
 }

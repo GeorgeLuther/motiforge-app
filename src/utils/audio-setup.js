@@ -1,8 +1,9 @@
 import { Sampler, Frequency, Reverb, Volume } from 'tone';
 
-	const masterVolume = new Volume().toDestination()
+//TODO: simplify for single sampler polyphony or add sample libraries for instruments instead of voices
 
-	const masterReverb = new Reverb().toDestination()
+	const masterVolume = new Volume().toDestination()
+	const masterReverb = new Reverb()
 	masterReverb.wet.value = .65
 	masterReverb.decay = 4
 
@@ -61,6 +62,7 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 			if (typeof note !== 'string' && note > 20) {
 				voices[`voice_${i}`].sampler.triggerAttackRelease(Frequency(note, "midi").toNote(), "8n", time, velocity)
 			}
+			
 		}
 	}
 

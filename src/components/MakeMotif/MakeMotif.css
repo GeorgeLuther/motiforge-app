@@ -1,0 +1,5 @@
+.make-motif {
+    height: 100vh;
+    background-image: url('../../assets/piano-keys.jpg');
+    background-size: cover;
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ControlPanel from './ControlPanel'
+import LoginRoute from './LoginRoute'
 
 
 it('renders without crashing',()=>{
   const div = document.createElement('div')
-  ReactDOM.render(<ControlPanel/>,div)
+  ReactDOM.render(<LoginRoute/>,div)
   ReactDOM.unmountComponentAtNode(div)
 })
