@@ -6,7 +6,7 @@ import { Sampler, Frequency, Reverb, Volume } from 'tone';
 	const masterReverb = new Reverb()
 	masterReverb.wet.value = .65
 	masterReverb.decay = 4
-	masterVolume.volume.value = -35
+	//masterVolume.volume.value = -35
 	const numVoices = 4
 	
 	const voices = {

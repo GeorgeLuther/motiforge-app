@@ -1,5 +1,6 @@
 export const Volume = jest.fn().mockImplementation(()=>{
     return {
+        volume: 20,
         toDestination: jest.fn()
     }
 })
@@ -11,7 +12,8 @@ export const Reverb = jest.fn().mockImplementation(()=>{
 })
 
 export const Transport = {
-
+        scheduleRepeat: ()=> jest.fn(),
+        bpm: ()=> jest.fn(),
         cancel: ()=> jest.fn(),
         stop: ()=> jest.fn()
 
@@ -29,8 +31,6 @@ export const Sampler = jest.fn().mockImplementation(()=>{
 export function loaded(){
     return new Promise(() => {})
 }
-
-
 
 export const Solo = jest.fn()
 

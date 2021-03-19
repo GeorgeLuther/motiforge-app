@@ -8,6 +8,7 @@ import Accordion from '../Accordion/Accordion'
 // import { motifToMidi } from '../../utils/audio-playback'
 // import MotifMethods from '../../utils/motif-methods'
 import { Transport, start } from 'tone'
+import { masterVolume } from '../../utils/audio-setup'
 import duo from '../../composers/phrase-form-trio'
 import trio from '../../composers/simple-trio'
 import quartet from '../../composers/simple-quartet'
@@ -35,6 +36,7 @@ export default class MakeForm extends Component {
     }
 
     toggleTransport=()=>{
+        masterVolume.volume.value = -35
         start()
         Transport.toggle()
     }
@@ -45,6 +47,7 @@ export default class MakeForm extends Component {
 
     
     componentDidMount() {
+
         Transport.scheduleRepeat((time)=>{
             this.playNote(time)
         }, "8n")
