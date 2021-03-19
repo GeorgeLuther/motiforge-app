@@ -1,9 +1,9 @@
 import config from '../config'
 import TokenService from './token-service'
 
-const MotifService = {
-    getMotifs() {
-      return fetch(`${config.API_ENDPOINT}/motif`, {
+const FormService = {
+    getForms() {
+      return fetch(`${config.API_ENDPOINT}/form`, {
         headers: {
         'authorization':`bearer ${TokenService.getAuthToken()}`,
         'content-type':'application/json'
@@ -15,8 +15,8 @@ const MotifService = {
           : res.json()
       )
     },
-    addNewMotif(){
-      return fetch(`${config.API_ENDPOINT}/motif`,{
+    addNewForm(){
+      return fetch(`${config.API_ENDPOINT}/form`,{
         method: 'POST',
         headers: {
           'authorization':`bearer ${TokenService.getAuthToken()}`,
@@ -28,8 +28,8 @@ const MotifService = {
           : res.json()
       )
     },
-    getMotifById(id){
-      return fetch(`${config.API_ENDPOINT}/motif/${id}`,{
+    getFormById(id){
+      return fetch(`${config.API_ENDPOINT}/form/${id}`,{
         method: 'GET',
         headers: {
           'authorization':`bearer ${TokenService.getAuthToken()}`,
@@ -42,8 +42,8 @@ const MotifService = {
           : res.json()
       )
     },
-    deleteMotif(id){
-      return fetch(`${config.API_ENDPOINT}/motif/${id}`,{
+    deleteForm(id){
+      return fetch(`${config.API_ENDPOINT}/form/${id}`,{
         method: 'DELETE',
         headers: {
           'authorization':`bearer ${TokenService.getAuthToken()}`,
@@ -53,11 +53,11 @@ const MotifService = {
       .then(res =>
         (!res.ok)
           ? res.json().then(err => Promise.reject(err))
-          : `Successfully deleted motif ${id}`
+          : `Successfully deleted form ${id}`
       )
     },
-    editMotif(id, newData){
-      return fetch(`${config.API_ENDPOINT}/motif/${id}`,{
+    editForm(id, newData){
+      return fetch(`${config.API_ENDPOINT}/form/${id}`,{
         method: 'PATCH',
         headers: {
           'authorization':`bearer ${TokenService.getAuthToken()}`,
@@ -73,4 +73,4 @@ const MotifService = {
     },
 }
 
-export default MotifService
+export default FormService
