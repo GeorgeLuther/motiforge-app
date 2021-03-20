@@ -1,6 +1,6 @@
 # Motiforge
 
-* Live version: https://motiforge-app-georgeluther.vercel.app/
+* Live version: https://motiforge-app.vercel.app
 * Demo Username: admin
 * Demo Password: pass
 * Associated API:
