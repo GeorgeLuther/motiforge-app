@@ -115,4 +115,8 @@ export default class MakeForm extends Component {
             </section>
         )
     }
+    componentWillUnmount(){
+        Transport.cancel()
+        Transport.stop()
+    }
 }

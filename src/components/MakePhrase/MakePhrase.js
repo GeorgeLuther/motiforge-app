@@ -101,55 +101,18 @@ export default class MakePhrase extends Component {
                 console.log('Error adding motif',err)
             })
     }
-    // deleteMotif=()=>{
-    //     //TODO: Add alert modal to confirm 
-    //     MotifService.deleteMotif(this.state.motif_id)
-    //     this.setState({
-    //         motif_name: null,
-    //         motif_id: null,
-    //         motif: null,
-    //     })
-    //     motifToMidi([])
-    // }
-    // applyNote=(e)=>{
-    //     if (this.state.motif && this.state.motif.length > 0) {
-    //         const motif = [...this.state.motif]
-    //         const idea = MotifMethods[e.target.value](motif)
-    //         motif.push(idea)
-    //         this.setState({motif: motif}, ()=> this.updateMotif())    
-    //     } else {
-    //         alert('Select a motif from Select Motif or start a new motif in Draw Motif')
-    //     }
-    // }
-    // generateMotif=(e)=>{
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             const renderedNotes = MotifMethods[e.target.value]()
-    //             this.setState({
-    //                 motif_name: `generated-${e.target.value}`,
-    //                 motif_id: motif.id,
-    //                 motif: renderedNotes
-    //             }, ()=> this.updateMotif())
-    //         })
-    //         .catch(err => {
-    //             console.log('Error generating motif',err)
-    //         })
-    // }
-    // applyVariation=(e)=>{
-    //     const variation = MotifMethods[e.target.value](this.state.motif)
-    //     const originalName = this.state.motif_name
-    //     MotifService.addNewMotif()
-    //         .then(motif => {
-    //             this.setState({
-    //                 motif_name: `${originalName}-var-${e.target.value}`,
-    //                 motif_id: motif.id,
-    //                 motif: variation
-    //             }, ()=> this.updateMotif())
-    //         })
-    //         .catch(err => {
-    //             console.log('Error generating motif',err)
-    //         })
-    // }
+    deletePhrase=()=>{
+        //TODO: Add alert modal to confirm 
+        if (this.state.phrase_id) {
+            PhraseService.deletePhrase(this.state.phrase_id)
+            this.setState({
+                phrase_name: null,
+                phrase_id: null,
+                motifs: null,
+                modal_shifts: null,
+            }, phraseToMidi([],[]))    
+        }
+    }
     render(){
         return (
             <section className="make-phrase">
@@ -163,6 +126,7 @@ export default class MakePhrase extends Component {
                         onClickPhrase={this.onSelectPhrase}
                     />
                     <PhraseDisplay
+                        phrase_id={this.state.phrase_id}
                         phraseArr={this.state.motifs}
                         shiftArr={this.state.modal_shifts}
                         allMotifs={this.state.allMotifs}
@@ -177,7 +141,7 @@ export default class MakePhrase extends Component {
                         
                         onDeleteMotif={this.onDeleteMotif}
                         addNewMotif={this.addNewMotif}
-                        deleteMotif={this.deleteMotif}
+                        deletePhrase={this.deletePhrase}
                     />
                     {/* <MotifGeneration
                         applyNote={this.applyNote}
