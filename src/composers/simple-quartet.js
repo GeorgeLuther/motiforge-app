@@ -20,7 +20,7 @@ for (let k=0;k<totPhrases;k++){
     const newVelocity = []
     for (let i=0;i<phraseLength;i++){
         newPhrase.push(Math.floor(Math.random()*8))
-        newVelocity.push(Math.floor(Math.random()*(120-70))+70)
+        newVelocity.push(Math.floor(Math.random()*(120-40))+40)
     }
     allPhrases.push(newPhrase)
     allVelicities.push(newVelocity)
@@ -150,6 +150,7 @@ function quartet(time){
         var adjustedPitch = scale[pitch+shift]+register+modulate
         var TadjustedPitch = scale[Tpitch+shift]+register+modulate
         voices.voice_1.playNote(adjustedPitch, allVolumes[count], time);
+        console.log(allVolumes[count])
         
         voices.voice_1.playNote(TadjustedPitch, TallVolumes[count], time)
     
@@ -163,6 +164,7 @@ function quartet(time){
         if (Mcount>=MallNotes.length) {
             Mcount=0
         }
+        
         var Mpitch = MallNotes[Mcount]
         var MadjustedPitch = scale[Mpitch+shift]+Mregister+modulate
         voices.voice_1.playNote(MadjustedPitch, MallVolumes[Mcount], time)

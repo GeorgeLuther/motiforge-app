@@ -21,3 +21,12 @@
 .form-info a:hover {
     color: #f29090;
 }
+.robot-radios {
+    padding: 20px;
+    text-align: center;
+}
+.robot-radios p {
+    padding: 16px;
+    margin: auto;
+}
+

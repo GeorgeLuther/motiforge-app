@@ -99,29 +99,33 @@ export default class MakeForm extends Component {
                         <p>Form is the big-picture of a song; the overall structure. The form creation tools are currently in development. The options and available approaches here will be much like the existing creation tools.
                         Eventually users should be able to guide the composition process or leave it completely up to the machine. For more information visit the info page or explore the<a href='https://github.com/GeorgeLuther/motiforge-app'>readme.</a> 
                         </p>
-                        <p>While the advanced features are not yet available, the options below will compose a brand new song using approaches similar to those you can expect to have access to in future versions. These algorithms can sound erratic and should be considered experimental sketches.
+                        <p>While the advanced features are not yet available, the options below will compose a brand new song using approaches similar to those you can expect to have access to in future versions. Each think of each channel as a radio performing music. You can switch between them to notice the differences in techniques or listen to a full performance. When you're ready for new compositions, choose 'generate new compositions'. These algorithms can sound erratic and should be considered experimental sketches.
                         </p>
                         <button className='method-btn' onClick={this.toggleTransport}>
                             play / pause
                         </button>
+                        <div className="robot-radios">
+                            <p>
+                                Robot Radios:       
+                            </p>
+                            
+                            <button className='method-btn' value={0} onClick={this.setSelection}>
+                                robot one
+                            </button>
 
-                        <button className='method-btn' value={0} onClick={this.setSelection}>
-                            robot one
-                        </button>
-
-                        <button className='method-btn' value={1} onClick={this.setSelection}>
-                            robot two
-                        </button>
+                            <button className='method-btn' value={1} onClick={this.setSelection}>
+                                robot two
+                            </button>
 
 
-                        <button className='method-btn' value={2} onClick={this.setSelection}>
-                            robot three
-                        </button>
+                            <button className='method-btn' value={2} onClick={this.setSelection}>
+                                robot three
+                            </button>
 
-                        <button className='method-btn' value={3} onClick={this.setSelection}>
-                            robot four
-                        </button>
-
+                            <button className='method-btn' value={3} onClick={this.setSelection}>
+                                robot four
+                            </button>
+                        </div>
                         <a href="/form">generate new compositions</a>
 
                 </div>
