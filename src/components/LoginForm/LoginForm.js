@@ -76,6 +76,11 @@ class LoginForm extends Component {
               required
             />
           </div>
+          <p>
+          Demo:<br></br>
+          - Username: demouser <br></br>
+          - Password: Pass123$
+        </p>
         </div>
         <div className="infographic">
           <button type='submit'>

@@ -6,11 +6,17 @@ import Nav from './Nav/Nav'
 
 class Header extends Component {
   state = {
-    isNavShown: false
+    isNavShown: false,
+    isDesktop: false
   } 
 
   showNav=()=> {this.setState({isNavShown: !this.state.isNavShown})}
   hideNav=()=> {this.setState({isNavShown: false})}
+
+  componentDidMount(){
+    console.log(window.innerHeight)
+    if (window.innerWidth > 560) this.setState({isDesktop: true})
+  }
 
   render() {
     return (
@@ -20,6 +26,10 @@ class Header extends Component {
               MOTIFORGE
             </Link>
           </h1>
+          {this.state.isDesktop
+          ? <Nav hideNav={this.hideNav}/>
+          
+          : <> 
           <button 
             className="hamburger"
             aria-label="navigation"
@@ -27,6 +37,9 @@ class Header extends Component {
             ><FontAwesomeIcon icon="bars" />
           </button>
           {this.state.isNavShown && <Nav hideNav={this.hideNav}/>}
+          </>
+          }
+
       </header>
     );
   }

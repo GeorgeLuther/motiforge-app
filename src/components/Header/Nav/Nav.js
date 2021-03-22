@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink } from 'react-router-dom'
 import UserContext from '../../../contexts/UserContext'
 import TokenService from '../../../services/token-service'
 import './Nav.css'
@@ -59,6 +59,7 @@ render(){
             {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
+
             
             <NavLink exact to='/landing' activeStyle={{display: "none"}}>
                 Info
