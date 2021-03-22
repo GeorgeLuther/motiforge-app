@@ -66,7 +66,7 @@ The Phrase and form pages work quite similarly. These techniques are part of a l
 - The scale degrees and transposition is relative to midi notes and a c major scale. So when we get to midi we are skipping some chromatic tones to create a major scale.
 
 ### Generate Notes: 
- These functions are used to generate individual notes given the context of the previous note. These functions are described further in as they relate to the makeMotif method. 
+ These functions are used to generate individual notes given the context of the previous note. These functions are described further in as they relate to the makeMotif method (step 2). 
 
 ### Generate Motifs: 
 These functions are used to generate an array of pitches 
