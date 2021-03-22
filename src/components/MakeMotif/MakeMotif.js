@@ -18,6 +18,7 @@ export default class MakeMotif extends Component {
         motif_name: null,
         motif_id: null,
         motif: [],
+        showInfo: false
     }
     updateMotif=()=>{
         motifToMidi(this.state.motif)
@@ -51,6 +52,9 @@ export default class MakeMotif extends Component {
             alert('motifs must have at least two notes')
         }
     }
+    onShowInfo=()=>{
+        this.setState({showInfo: !this.state.showInfo})
+    }
     onChangeName=(e)=>{
         if (this.state.motif_id !== null) {
             this.setState({motif_name: e.target.value},()=> this.updateMotif())
@@ -66,7 +70,10 @@ export default class MakeMotif extends Component {
             motif_name: e.currentTarget.getAttribute("motif_name"),
             motif_id: Number(e.currentTarget.getAttribute("motif_id")),
             motif: newNotes
-        }, ()=> motifToMidi(this.state.motif))
+        }, ()=> {
+            motifToMidi(this.state.motif)
+            this.context.setOpenTab(1)
+        })
     }
     addNewMotif=()=>{
         MotifService.addNewMotif()
@@ -146,7 +153,7 @@ export default class MakeMotif extends Component {
                 <ControlPanel name={this.state.motif_name}/>
                 <Accordion 
                     groupName="make-motif"
-                    headerTextArr={["Select Motif","Draw Motif","Generate Motif"]}
+                    headerTextArr={["Select Motif","Edit Motif","Generate Motif"]}
                 >
                     <MotifPicker 
                         selectedId={this.state.motif_id}
@@ -162,6 +169,8 @@ export default class MakeMotif extends Component {
                         onDeleteBeat={this.onDeleteBeat}
                         addNewMotif={this.addNewMotif}
                         deleteMotif={this.deleteMotif}
+                        toggleInfo={this.onShowInfo}
+                        showInfo={this.state.showInfo}
                     />
                     <MotifGeneration
                         motif_id={this.state.motif_id}

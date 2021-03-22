@@ -14,7 +14,6 @@ class Header extends Component {
   hideNav=()=> {this.setState({isNavShown: false})}
 
   componentDidMount(){
-    console.log(window.innerHeight)
     if (window.innerWidth > 560) this.setState({isDesktop: true})
   }
 
@@ -27,8 +26,15 @@ class Header extends Component {
             </Link>
           </h1>
           {this.state.isDesktop
-          ? <Nav hideNav={this.hideNav}/>
-          
+          ? <>
+          <button 
+            className="hamburger"
+            aria-label="navigation"
+            onClick={this.showNav}
+            ><FontAwesomeIcon icon="bars" />
+          </button>
+          <Nav hideNav={this.hideNav}/>
+          </>
           : <> 
           <button 
             className="hamburger"

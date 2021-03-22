@@ -2,21 +2,29 @@ import React from 'react'
 import './MotifDisplay.css'
 
 export default function MotifDisplay(props) {
+    let showInfo = (!props.motif_id || props.showInfo) 
+
     return (
         <div className="motif-display">
-            {!props.motif_id && <div className="motif-display-summary">
+            {showInfo && <div className="motif-display-summary">
                 <h3>How it works</h3>
-                <p> It is recommended that a motif is somewhere between three and ten beats long. Each column represents a beat in the motif. Change the pitch of a note by clicking a different color option in the column. 
+                <p> Here you can select the notes for each beat of your motif, add new beats, delete them, and delete your motif entirely. Each column represents a beat in the motif. Change the pitch of a note by clicking a different color option in the column. To hear your changes, press the play button. Your motif will loop with a pause between each performance.
                     The red note represents the root note (tonic). The rows highlighted in white are chord tones. 
-                    Chord tones imply resolution and work well as starting or ending notes. Non-chord tones tend to be more dissonant and imply tension. 
-                    Then again, rules were made to be broken!</p>
+                    Chord tones imply resolution and work well as starting or ending notes. Non-chord tones tend to be more dissonant and imply tension. It is recommended that a motif is somewhere between three and ten beats long.
+                    </p>
             </div>}
             <div className="motif-editor">
                 <button className="motif-btn" onClick={props.addNewMotif}>start new motif</button>
                 {props.motif_id && 
+                    <>
+                        <label>
+                        show more Info
+                        <input type="checkbox" id="showInfo" onChange={props.toggleInfo} checked={props.showInfo ? "checked" : ''}></input>
+                    </label>
                     <label  className="motif-name-label">motif name:
                     <input className="motif-name" defaultValue={props.motifName} onChange={props.onChangeName}></input>
                     </label>
+                    </>
                 }
                 <div className="motif-graph">
                 {props.motif_id && props.motifArr.map((val,idx) => {

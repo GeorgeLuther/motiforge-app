@@ -38,7 +38,8 @@ export default class MakePhrase extends Component {
         let newData = {
             name: this.state.phrase_name,
             motifs: this.state.motifs,
-            modal_shifts: this.state.modal_shifts
+            modal_shifts: this.state.modal_shifts,
+            showInfo: false
         }
         PhraseService.editPhrase(this.state.phrase_id, newData)
     }
@@ -84,6 +85,9 @@ export default class MakePhrase extends Component {
         } else {
             alert('Phrase cannot have any fewer motifs')
         }
+    }
+    onShowInfo=()=>{
+        this.setState({showInfo: !this.state.showInfo})
     }
     onChangeName=(e)=>{
         if (this.state.phrase_id !== null) {
@@ -148,6 +152,8 @@ export default class MakePhrase extends Component {
                         onDeleteMotif={this.onDeleteMotif}
                         addNewMotif={this.addNewMotif}
                         deletePhrase={this.deletePhrase}
+                        showInfo={this.state.showInfo}
+                        toggleInfo={this.onShowInfo}
                     />
                     {/* <MotifGeneration
                         applyNote={this.applyNote}

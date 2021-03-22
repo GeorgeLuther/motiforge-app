@@ -67,6 +67,7 @@
     flex-wrap: nowrap;
     margin: 0;
     width: 90vw;
+    overflow: scroll;
 }
 .motif-graph label {
     display: flex;

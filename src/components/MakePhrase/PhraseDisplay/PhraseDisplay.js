@@ -2,20 +2,27 @@ import React from 'react'
 //import './PhraseDisplay.css'
 
 export default function PhraseDisplay(props) {
+    let showInfo = !props.phrase_id || props.showInfo
     return (
         <div className="motif-display">
-            {!props.phrase_id && <div className="motif-display-summary">
+            {showInfo && <div className="motif-display-summary">
                 <h3>How it works</h3>
-                <p> To make a phrase, first add a few motifs from the dropdown. It is a good idea to have some ideas to repeat at some point as this adds a sense of familiarity and structure. Each column represents a motif. Shift the harmonic context (mode) of a motif by clicking a different color option in the column. 
-                    The red note represents the root note (tonic). Experiment with these positions to create tension and release. One common progression would be red (I), green (IV), turquoise (V), red (I). The color coding matches that of Boomwhackers. 
+                <p> To edit or add a phrase, either select a phrase or select 'start new phrase'.  You can add a motifs by selecting an option from 'your motifs' dropdown. Each colorful column represents a motif. It is a good idea to have some ideas to repeat at some point as this adds a sense of familiarity and structure. You can see which motifs are repeating based on their names at the top of the columns. 
+                    Shift the harmonic context (mode) of a motif by clicking a different color option in the column. The red note represents the root note (tonic). Experiment with these positions to create different chord progressions for tension and release. 
+                    One common progression would be red (I), green (IV), turquoise (V), red (I). The color coding matches that of Boomwhackers. 
                     Remember, rules were made to be broken. Keep an eye out, the phrase generation methods are currently under development!</p>
             </div>}
             <div className="motif-editor">
                 <button className="motif-btn" onClick={props.addNewPhrase}>start new phrase</button>
-                {props.phrase_id && 
+                {props.phrase_id && <>
+                    <label>
+                        show more Info
+                        <input type="checkbox" id="showInfo" onChange={props.toggleInfo} checked={props.showInfo ? "checked" : ''}></input>
+                    </label>
                     <label  className="motif-name-label">phrase name:
                     <input className="motif-name" defaultValue={props.phraseName} onChange={props.onChangeName}></input>
                     </label>
+                    </>
                 }
                 <div className="motif-graph">
                 {props.phrase_id && props.phraseArr.map((val,idx) => {

@@ -1,6 +1,6 @@
 nav {
     position: fixed;
-    top: 42px;
+    top: 48px;
     right: 0;
     padding: 4px;
     display: flex;
@@ -9,6 +9,7 @@ nav {
     background-color: #274144;
     border-radius: 0 0 0 8px;
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    z-index: 3;
 }
 
 a, a:visited {
@@ -25,11 +26,25 @@ a:hover {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 560px) {
+@media only screen and (min-width: 760px) {
     nav {
         position: static;
         flex-direction: row-reverse;
         padding-right: 16px;
         background-color: none;
+        z-index: 3;
+    }
+    nav a {
+        display: flex;
+        flex-flow: row nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    nav span {
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        align-items: center;
+        padding-left: 8px;
     }
 }

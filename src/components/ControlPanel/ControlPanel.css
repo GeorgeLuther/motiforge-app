@@ -1,9 +1,12 @@
 .control-panel {
+    position: fixed;
+    width: 100%;
     padding: 16px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #FFE6E2;
+    z-index: 1;
 }
 
 .global-transport, .global-tempo-volume {
@@ -28,4 +31,7 @@
     color: #4A3336;
     padding: 0;
     margin: 0;
+}
+.global-tempo-volume {
+    margin-right: 20px;
 }
