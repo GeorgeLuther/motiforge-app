@@ -33,6 +33,8 @@ Installing this app locally follows the standard methods for a react app:
 1. Clone github repo to your machine
 2. Run command 'npm i' to install dependencies locally
 3. Run command 'npm run dev' to start up server locally
+4. Set API_ENDPOINT in ./src/config.js to http://localhost:3000/api
+4. Run command 'npm start' to start up app locally
 
 
 ## Front-end Concepts 
