@@ -8,7 +8,7 @@ Contents:\
 \
 [Application Summary](#application-summary)\
 [Front-end Concepts](#front-end-concepts)\
-[API Endpoints](#application-summary)\
+[API Endpoints](#application-summary)
 
 ## Summary
 
@@ -55,7 +55,7 @@ An alternative approach to creating motifs is to select an option in the 'Genera
 
 ![ScreenShot-Generate-Motif](https://raw.githubusercontent.com/GeorgeLuther/readme-images/main/generate-motif.jpg)
 
-These techniques are part of a long term goal of the project to provide a framework for human guided computer generated music. The functions at play are described below.
+The Phrase and form pages work quite similarly. These techniques are part of a long term goal of the project to provide a framework for human guided computer generated music. The functions at play are described below.
 
 ### Notes, Motifs, Phrases, and Forms: 
 
