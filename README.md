@@ -57,7 +57,7 @@ An alternative approach to creating motifs is to select an option in the 'Genera
 
 The Phrase and form pages work quite similarly. These techniques are part of a long term goal of the project to provide a framework for human guided computer generated music. The functions at play are described below.
 
-### Notes, Motifs, Phrases, and Forms: 
+## Notes, Motifs, Phrases, and Forms: 
 
 - Notes are represented by scale-degree between -3 & 8 where 0 = C / Tonal-Center, -3 = G / Lower Dominant. This octave and a half range prevents absurd jumps and unnatural melodies.
 - Motifs are an array of notes
@@ -65,13 +65,13 @@ The Phrase and form pages work quite similarly. These techniques are part of a l
 - Forms contain an array of phrases and an array of the phrase's respective transpositions. When performed the phrase is moved as a whole chromatically given the transposition. motifs [0,1,2] [3,4,5] modally shifted to [1,2,3] [4,5,6] becomes midi notes [62,64,65] [67,69,71] and can be transposed by 1 to [63,65,66] [68,70,72]
 - The scale degrees and transposition is relative to midi notes and a c major scale. So when we get to midi we are skipping some chromatic tones to create a major scale.
 
-#### Generate Notes: 
+### Generate Notes: 
  These functions are used to generate individual notes given the context of the previous note. These functions are described further in as they relate to the makeMotif method. 
 
-#### Generate Motifs: 
+### Generate Motifs: 
 These functions are used to generate an array of pitches 
 
-##### makeMotif: 
+#### makeMotif: 
 [x]
 Small 2 to 5 note ideas that emphasize chord-tones
 1. The first note is either a random note within the octave or a chord-tone
@@ -86,83 +86,83 @@ Small 2 to 5 note ideas that emphasize chord-tones
 3. If the first note was a chord tone then the last note can be any of the above.
 If the first note was not a chord tone then the last note must be the nearest chord-tone to the second to last note
 
-##### linearMotif: 
+#### linearMotif: 
 [x]
 Make a motif moving in one direction by a fixed intervallic leap.
 i.e 1,2,3,4,5 or 1,3,5,7,9 or 1,4,7,10
 If the interval is large then the motif will be shorter, this is done to avoid melodies that span an 'unnatural' range.
 
-##### circleMotif: 
+#### circleMotif: 
 []
 A circle motif approaches or trails a chord tone with a pattern of symmetrically related notes.
 i.e 243 or 3423 or 4,2,-3,-1,1
 
-#### Manipulate Motifs:
+### Manipulate Motifs:
 These functions create variations based on a motif
 
-##### Reverse: 
+#### Reverse: 
 [x]
 flips a motif from end to start
 0,2,4 becomes 4,2,0
 
-##### Mirror: 
+#### Mirror: 
 [x]
 the original motif followed by its reverse, including or excluding its apex
 1,2,3,4,4,3,2,1 or 1,2,3,4,3,2,1
 
-##### Negate: 
+#### Negate: 
 [x]
 each note becomes its negative (relative to scale/tonal center)
 2,3,4 becomes -2,-3,-4
 
-##### Invert: 
+#### Invert: 
 [x]
 each note becomes its negative relative to the starting pitch
 2, 3 ,4 becomes 2,1,-1
 
-##### Upend:
+#### Upend:
 [x]
 each note becomes its negative relative to the end pitch
 
-##### Overturn:
+#### Overturn:
 [x]
 each note becomes its negative relative to the midpoint of the pitch range used
 ...TODO: method/argument to use mean, median, mode, or midpoint of range?
 
-##### Shuffle: 
+#### Shuffle: 
 [x]
 randomly redistributes some or all of the notes in a motif
 1, 2, 3, 4 becomes 2, 4, 3, 1
 select all, random, or specific # of indexes
 
-##### Trunk: 
+#### Trunk: 
 [x]
 takes (a) section(s) out of the motif
 1, 2, 3, 4, 5, becomes 1, 2, 5
 
-##### Hunk: 
+#### Hunk: 
 []
 takes (a) section(s) of the motif and moves them around
 1, 2, 3, 4, 5 becomes 1, 2, 5, 3, 4
 
-##### Thunk: 
+#### Thunk: 
 []
 takes (a) section(s) of the motif and copies them into a new spot
 
-##### Weave:
+#### Weave:
 []
-takes a sequence from the motif and distributes it evenly within the motif
+takes a sequence from the motif and distributes it evenly within the motif, delace / interlace
 
-##### Shift:
+#### Shift:
 []
 shift the motif up or down relative to emphasized chord-tones
 
-##### Noise:
+#### Noise:
 [X]
 randomly replaces some non-chord tones
 1, 2, 3, 4, 5, 6 become 1, 7, 3, 4, 5, 2
 
-##### Similar?: 
+#### Similar?: 
 []
 When note, motif, and phrase are encapsulated, this will use the same technique as was used originally but with a minor difference
 1,3,2,4,3,5,4 might become 1,4,2,5,3,6,4 
@@ -176,45 +176,44 @@ Methods should be created that combine multiple motifs in various ways such as i
 In the phrase creator you can select a phrase to work on from a list of your phrases. This page works much the same way as the motif page, but instead of notes you are manipulation motifs. We can produce familiarity and order by putting motifs into patterns. A phrase is a larger melodic idea made from multiple motifs.
 The phrase creator will assist you in building phrases from repeated motifs and variations thereof. You can make things more interesting by with harmony. Modal harmony is made possible here by shifting the pitch of motifs so they fit with certain notes. This progression of pitch contexts creates a sense of tension and release. 
 
-
 ### Generate Phrases: 
-#### These functions will be used to generate arrays of phrases.
+ These functions will be used to generate arrays of phrases.
 
-- []
-### makePhrase: 
-Creates a pattern of motifs and applies a harmonic progression.
+
+#### makePhrase: 
+[] Creates a pattern of motifs and applies a harmonic progression.
 1. Determines the motifs and variations that will be used.
 2. Create a chord progression proportionate to the motific complexity of the phrase. (Currently 1 chord per motif. In future versions more consideration should be given to what is implied by the motif.)
 3. Shift motifs via chord progression and concatenate into phrase.
 4. Add phrase to phrases array.
-- []
-### imitatePhrase:
-Creates a pattern of motifs that follows the same structure of repetition and variation as another phrase but uses a different set of motifs
 
-## Manipulate Phrases:
-### These functions allows for variations of phrases. These ideas are being brainstormed. They will likely be similar if not combined with the motif manipulations.
+#### imitatePhrase:
+[] Creates a pattern of motifs that follows the same structure of repetition and variation as another phrase but uses a different set of motifs
 
-### Reverse: flips a phrase from end to start
+#### Manipulate Phrases:
+ These functions allows for variations of phrases. These ideas are being brainstormed. They will likely be similar if not combined with the motif manipulations.
+
+#### Reverse: flips a phrase from end to start
 1,2,3,4,5 becomes 5,4,3,2,1
 
-### Mirror: the original phrase followed by its reverse, including or excluding its apex
+#### Mirror: the original phrase followed by its reverse, including or excluding its apex
 1,2,3,4,4,3,2,1 or 1,2,3,4,3,2,1
 
-### Shuffle: randomly redistributes motifs in the phrase
+#### Shuffle: randomly redistributes motifs in the phrase
 1,2,3,4,5 becomes 1,4,2,3,5
 
-### Rondo: a phrase keeps repeating periodically and may bookend the phrase
+#### Rondo: a phrase keeps repeating periodically and may bookend the phrase
 I.e 1,2,3,4,5,6,7,8 becomes 1,2,3,1,4,5,1,6,7,1,8
 2,3,4,5,6 becomes 1,2,1,3,1,4,1,5,1,6,1
 
-### Braid: distributes a part of the existing phrase into itself 
+#### Braid: distributes a part of the existing phrase into itself 
 create motif sequence from the existing phrase
 random order
 start from beginning, linear
 start from end, linear
 grab a chunk
 
-###distribute this sequence of motifs into the existing phrase
+#### Shuffle: distribute this sequence of motifs into the existing phrase
 distribute evenly
 distribute randomly (not recommended)
 start from beginning, linear
@@ -227,7 +226,7 @@ chunks
 Modal shifts will be determined based on the circle of fifths and markov chains developed from common chord progressions. Many of the concepts above may also apply.
 
 
-### Form Page
+## Form Page
 
 The form page currently shows a few sketches of generative composition algorithms and a brief explanation of the concept.
 Forms are created here through a system of rules, ranges, and randomness. This particular version attempts to apply a bottom-up approach to composition. We build small motifs and variations thereof. Then, given a harmonic structure these motifs are concatenated into larger phrases and variations thereof. These phrases are similarly concatenated into sections with consideration of tonal centers. Finally, the sections are concatenated into the formal structure of the piece and it is then performed.
