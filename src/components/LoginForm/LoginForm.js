@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 //import { Input, Label } from '../Form/Form'
 import AuthApiService from '../../services/auth-api-service'
 import UserContext from '../../contexts/UserContext'
@@ -80,7 +81,9 @@ class LoginForm extends Component {
           <button type='submit'>
             Login
           </button>
-        </div>
+          {' '}
+          <Link to='/register'>Need to create an account?</Link>
+         </div>
       </form>
     )
   }

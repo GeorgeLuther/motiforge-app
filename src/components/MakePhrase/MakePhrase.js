@@ -10,8 +10,12 @@ import PhraseDisplay from './PhraseDisplay/PhraseDisplay'
 
 // import MotifGeneration from './MotifGeneration/MotifGeneration'
 import './MakePhrase.css'
+import UserContext from '../../contexts/UserContext'
 
 export default class MakePhrase extends Component {
+
+    static contextType = UserContext
+
     state = {
         phrase_name: null,
         phrase_id: null,
@@ -39,6 +43,7 @@ export default class MakePhrase extends Component {
         PhraseService.editPhrase(this.state.phrase_id, newData)
     }
     onSelectPhrase=(e)=>{
+
         const newMotifs = e.currentTarget.getAttribute("motifs").split(',').map(motif => Number(motif))
         const newShifts = e.currentTarget.getAttribute("modal_shifts").split(',').map(modal_shifts => Number(modal_shifts))
 
@@ -47,10 +52,12 @@ export default class MakePhrase extends Component {
             phrase_id: Number(e.currentTarget.getAttribute("motif_id")),
             motifs: newMotifs,
             modal_shifts: newShifts,
-        }, ()=> phraseToMidi(newMotifs, newShifts))
+        }, ()=> {
+            phraseToMidi(newMotifs, newShifts)
+            this.context.setOpenTab(1)  
+        })
     }
     onChangeMode=(e)=>{
-        console.log(e.target.value)
         const newMode = Number(e.target.value)
         const newModeArr = [...this.state.modal_shifts]
         let beatIdx = e.target.name
@@ -65,7 +72,7 @@ export default class MakePhrase extends Component {
         if (this.state.motifOption && this.state.phrase_id) {
             this.setState({motifs: [...this.state.motifs, Number(this.state.motifOption)]}, ()=> this.updatePhrase())
         } else {
-            alert('Please select a motif from your motifs dropdown.')
+            alert('Something went wrong, please click \'start new phrase\', select a phrase.')
         }
         
     }
@@ -89,7 +96,6 @@ export default class MakePhrase extends Component {
     addNewPhrase=()=>{
         PhraseService.addNewPhrase()
             .then(phrase => {
-                console.log(phrase.motifs)
                 this.setState({
                     phrase: phrase.name,
                     phrase_id: phrase.id,
@@ -98,7 +104,7 @@ export default class MakePhrase extends Component {
                 }, ()=> phraseToMidi(phrase.motifs, phrase.modal_shifts))
             })
             .catch(err => {
-                console.log('Error adding motif',err)
+                console.log('Error adding new phrase',err)
             })
     }
     deletePhrase=()=>{
@@ -119,7 +125,7 @@ export default class MakePhrase extends Component {
                 <ControlPanel name={this.state.phrase_name}/>
                 <Accordion 
                     groupName="make-phrase"
-                    headerTextArr={["Select Phrase","Shift Phrase","Generate Phrase"]}
+                    headerTextArr={["Select Phrase","Edit Phrase","Generate Phrase"]}
                 >
                     <PhrasePicker 
                         selectedId={this.state.phrase_id}
@@ -151,5 +157,8 @@ export default class MakePhrase extends Component {
                 </Accordion>
             </section>
         )
+    }
+    componentWillUnmount(){
+        this.context.setOpenTab(-1)
     }
 }

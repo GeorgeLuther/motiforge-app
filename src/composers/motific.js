@@ -206,6 +206,8 @@ const melody = []
 const harmony = []
 const bass = []
 
+
+
 const form = makeForm()
 
 form.forEach((section, idx) => {
@@ -267,9 +269,9 @@ melody.push(2)
 harmony.push(4) 
 
 
-console.log('motifs',motifs)
-console.log('melody',melody)
-console.log('bass',bass)
+// console.log('motifs',motifs)
+// console.log('melody',melody)
+// console.log('bass',bass)
 
 
 

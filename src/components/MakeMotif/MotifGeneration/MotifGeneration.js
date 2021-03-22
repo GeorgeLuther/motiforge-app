@@ -5,11 +5,13 @@ export default function MotifGeneration(props) {
     //TODO: refactor as accordion with drop-downs, display info on option hover
     return (
         <div className="motif-generation">
+            {props.motif_id &&
             <div className="note-by-note">
                 <div className="about-method">
                     <h3>Add a note</h3>
                     <p>Picks the next note in a motif based on the current note.</p>
                 </div>
+                
                 <div className="method-options">
                     <label>
                     <button className="method-btn" onClick={props.applyNote} value="randNote">random note</button>
@@ -40,7 +42,7 @@ export default function MotifGeneration(props) {
                     A fifth up or a fourth down.
                     </label>
                 </div>
-            </div>
+            </div>}
 
 
             <div className="spawn-motif">
@@ -67,7 +69,7 @@ export default function MotifGeneration(props) {
                     </label> */}
                 </div>
             </div>
-
+            {props.motif_id &&
             <div className="alter-motif">
                 <div className="about-method">
                     <h3>Alter a motif</h3>
@@ -112,7 +114,7 @@ export default function MotifGeneration(props) {
                     Randomly replaces some non-chord tones.
                     </label>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

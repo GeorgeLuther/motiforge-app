@@ -1,16 +1,17 @@
 import React from 'react'
 import './Accordion.css'
+import UserContext from '../../contexts/UserContext'
 
 export default class Accordion extends React.Component {
-    state = {
-        openTab: -1,
-    }
+
+    static contextType = UserContext
+
     handleOpenTab=(e)=>{
         const newIdx = Number(e.currentTarget.id)
-        if (this.state.openTab !== newIdx) {
-            this.setState({openTab: newIdx})
+        if (this.context.openTab !== newIdx) {
+            this.context.setOpenTab(newIdx)
         } else {
-            this.setState({openTab: -1})
+            this.context.setOpenTab(-1)
         }
     }
     render(){
@@ -22,7 +23,7 @@ export default class Accordion extends React.Component {
                             key={'tab_'+idx}
                             idx={idx}
                             title={this.props.headerTextArr[idx]}
-                            openTab={this.state.openTab}
+                            openTab={this.context.openTab}
                             handleOpenTab={this.handleOpenTab}
                         >
                             {child}

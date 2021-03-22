@@ -7,7 +7,7 @@ import Accordion from '../Accordion/Accordion'
 // import ControlPanel from '../ControlPanel/ControlPanel'
 // import { motifToMidi } from '../../utils/audio-playback'
 // import MotifMethods from '../../utils/motif-methods'
-import { Transport, start } from 'tone'
+import { Transport, start, loaded } from 'tone'
 import { masterVolume } from '../../utils/audio-setup'
 import duo from '../../composers/phrase-form-trio'
 import trio from '../../composers/simple-trio'
@@ -18,7 +18,7 @@ import './MakeForm.css'
 
 export default class MakeForm extends Component {
     state = {
-        selection: 2,
+        selection: null,
     }
     playNote=(time)=>{
         if (this.state.selection === 0) {
@@ -36,13 +36,26 @@ export default class MakeForm extends Component {
     }
 
     toggleTransport=()=>{
-        masterVolume.volume.value = -35
-        start()
-        Transport.toggle()
+        if (this.state.selection === null ){
+            alert('please select a composition style')
+        }
+        loaded().then(()=>{
+            masterVolume.volume.value = -35
+            start()
+            Transport.toggle()
+    
+        })
     }
 
     setSelection=(e)=>{
-        this.setState({selection: Number(e.target.value)})
+        const selection = Number(e.target.value)
+        this.setState({selection: selection})
+
+        // if (selection === 3) {
+        //     console.log('boom')
+        //     motific.makeMotifs()
+        //     motific.notate()
+        // }
     }
 
     
@@ -86,30 +99,30 @@ export default class MakeForm extends Component {
                         <p>Form is the big-picture of a song; the overall structure. The form creation tools are currently in development. The options and available approaches here will be much like the existing creation tools.
                         Eventually users should be able to guide the composition process or leave it completely up to the machine. For more information visit the info page or explore the<a href='https://github.com/GeorgeLuther/motiforge-app'>readme.</a> 
                         </p>
-                        <p>While the advanced features are not yet available, the options below will compose a brand new song using approaches similar to those you can expect to have access to in future versions.
+                        <p>While the advanced features are not yet available, the options below will compose a brand new song using approaches similar to those you can expect to have access to in future versions. These algorithms can sound erratic and should be considered experimental sketches.
                         </p>
-                        <button onClick={this.toggleTransport}>
+                        <button className='method-btn' onClick={this.toggleTransport}>
                             play / pause
                         </button>
 
-                        <button value={0} onClick={this.setSelection}>
+                        <button className='method-btn' value={0} onClick={this.setSelection}>
                             robot one
                         </button>
 
-                        <button value={1} onClick={this.setSelection}>
+                        <button className='method-btn' value={1} onClick={this.setSelection}>
                             robot two
                         </button>
 
 
-                        <button value={2} onClick={this.setSelection}>
+                        <button className='method-btn' value={2} onClick={this.setSelection}>
                             robot three
                         </button>
 
-                        <button value={3} onClick={this.setSelection}>
+                        <button className='method-btn' value={3} onClick={this.setSelection}>
                             robot four
                         </button>
 
-                        <a href="/forms">new composition</a>
+                        <a href="/form">generate new compositions</a>
 
                 </div>
             </section>

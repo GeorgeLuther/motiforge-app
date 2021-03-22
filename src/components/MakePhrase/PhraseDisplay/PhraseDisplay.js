@@ -7,18 +7,18 @@ export default function PhraseDisplay(props) {
             {!props.phrase_id && <div className="motif-display-summary">
                 <h3>How it works</h3>
                 <p> To make a phrase, first add a few motifs from the dropdown. It is a good idea to have some ideas to repeat at some point as this adds a sense of familiarity and structure. Each column represents a motif. Shift the harmonic context (mode) of a motif by clicking a different color option in the column. 
-                    The red note represents the root note (tonic). Experiment with these positions to create tension and release. One common progression would be red (I), green (IV), turquoise (V), red (I). The color coding matches that of Boomwhackers.
-                    Remember, rules were made to be broken!</p>
+                    The red note represents the root note (tonic). Experiment with these positions to create tension and release. One common progression would be red (I), green (IV), turquoise (V), red (I). The color coding matches that of Boomwhackers. 
+                    Remember, rules were made to be broken. Keep an eye out, the phrase generation methods are currently under development!</p>
             </div>}
             <div className="motif-editor">
                 <button className="motif-btn" onClick={props.addNewPhrase}>start new phrase</button>
-                {props.phraseArr && 
+                {props.phrase_id && 
                     <label  className="motif-name-label">phrase name:
                     <input className="motif-name" defaultValue={props.phraseName} onChange={props.onChangeName}></input>
                     </label>
                 }
                 <div className="motif-graph">
-                {props.phraseArr && props.phraseArr.map((val,idx) => {
+                {props.phrase_id && props.phraseArr.map((val,idx) => {
                     return (
                         <div 
                             className={`motif-column${(idx%2) ? ' dark' : ''}`}
@@ -31,7 +31,7 @@ export default function PhraseDisplay(props) {
                     )
                 })}
                 </div>
-                {props.phraseArr &&
+                {props.phrase_id &&
                 <div className="motif-options">
                     <label className="motif-dropdown">
                         Your motifs:

@@ -7,11 +7,15 @@ const UserContext = React.createContext({
   user: {},
   error: null,
 
+  openTab: null,
+
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
+
+  setOpenTab: () => {},
 
 })
 
@@ -23,6 +27,7 @@ export class UserProvider extends Component {
     const state = { 
       user: {}, 
       error: null,
+      openTab: -1,
     }
 
     const jwtPayload = TokenService.parseAuthToken()
@@ -50,6 +55,10 @@ export class UserProvider extends Component {
   componentWillUnmount() {
     IdleService.unRegisterIdleResets()
     TokenService.clearCallbackBeforeExpiry()
+  }
+  
+  setOpenTab = (tab) => {
+    this.setState({ openTab: tab })
   }
 
   setError = error => {
@@ -110,7 +119,9 @@ export class UserProvider extends Component {
     const value = {
       user: this.state.user,
       error: this.state.error,
-      
+      openTab: this.state.openTab,
+
+      setOpenTab: this.setOpenTab,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
