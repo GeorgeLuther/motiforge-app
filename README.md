@@ -17,9 +17,9 @@ Users can create music from some of its basic building blocks:
 
 - Motifs
 - Phrases
-- Forms[]
+- Forms
 
- The long term goal of this project is to create an app that generates music through a system of rules, ranges, and randomness. Eventually users should be able to guide or control almost every aspect of the composition process or leave it completely up to the machine; always with interesting and appealing musical results. This version was based on a bottom-up approach to composition and the concept of concatenation. We build small motifs and variations thereof. Then, given a harmonic structure these motifs are concatenated into larger phrases and variations thereof. These phrases are similarly concatenated into sections with consideration of tonal centers. Finally, the sections are concatenated into the formal structure of the piece and it is then performed.
+ The long term goal of this project is to create an app that generates music through a system of rules, ranges, and randomness. Ideally users should be able to guide or control many aspects of the composition process or leave them completely up to the machine; always with interesting and appealing musical results. This version was based on a bottom-up approach to composition and the concept of concatenation. We build small motifs and variations thereof. Then, given a harmonic structure these motifs are concatenated into larger phrases and variations thereof. These phrases are similarly concatenated into sections with consideration of tonal centers. Finally, the sections are concatenated into the formal structure of the piece and it is then performed.
 
  ### Technology Used 
 
